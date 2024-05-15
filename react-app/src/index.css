@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  color: white;
+  background-color: #f9f7f1;
+}
+header {
+  padding-top: .5em;
+  padding-right: 1em;
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 2em;
+  text-transform: uppercase;
+  display: inline-block;
+  line-height: 3rem;
+  margin-bottom: 3em;
+
+}
+
+
+

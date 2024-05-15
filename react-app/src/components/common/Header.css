@@ -1,0 +1,122 @@
+.navlink {
+    font-family: "sans-serif";
+}
+.navlinkText:hover {
+
+}
+
+.navLinkHover {
+    /* Your existing styles */
+    background-color: #2f2f2f;
+    transition: background-color 0.3s ease;
+}
+
+.navLinkHover:hover {
+    background-color: white;
+}
+.navlink a:before, div.brackets a:after {
+    position: absolute;
+    opacity: 0;
+    font-size: 35px;
+    top: 0px;
+    transition: all 0.3s;
+}
+
+.navlink a:before {
+    content: '(';
+    left: 0px;
+    transform: translateX(10px);
+}
+
+.navlink a:after {
+    content: ')';
+    right: 0px;
+    transform: translateX(-10px);
+
+
+}
+
+
+
+
+.navlinkText {
+    text-align: center;
+    font-size: .7em;
+
+}
+
+.navlinkText img {
+    width: 15%
+}
+
+/*@media only screen and (max-width: 600px) {
+    .navlinkText {
+        margin-top: 20px;
+    }
+}
+
+@media only screen and (max-width: 700px) and (max-height: 400px) {
+    a.evanston-tavern {
+        border-width: .1rem;
+    }
+
+    .navlinkText img {
+        width: 100%;
+
+    }
+}*/
+
+.custom-toggler .navbar-toggler-icon {
+    height: .5em;
+    width: .5em;
+
+}
+
+.custom-toggler.navbar-toggler {
+    width: 2em;
+
+
+}
+
+.menu-container {
+    border-color: #2f2f2f;
+    border-bottom-width: 1.5px;
+    border-right-width: 1px;
+    border-left-width: 0.5px;
+    border-top-width: 1px;
+    border-style: solid;
+    display: block;
+    padding: 0;
+    /* Add any other styles you need */
+}
+
+
+.menu-container.open {
+    background-color: #2f2f2f;
+
+}
+
+
+
+
+
+
+
+a.evanston-tavern {
+
+    background-color: #2f2f2f;
+    border-style: outset;
+    line-height: .5em;
+    border-left-width: thin;
+    border-right-width: thin;
+    border-top-width: thick;
+    border-bottom-width: thick;
+    /* border-color: #D1B000; */
+    /*  border-color: #D1B000;*/
+
+}
+
+
+/* border-color: #D1B000; */
+
+/* border-bottom-width: thick; */

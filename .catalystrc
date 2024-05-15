@@ -1,0 +1,36 @@
+{
+  "defaults": {
+    "project": 1,
+    "env": 1
+  },
+  "actives": {
+    "project": 1,
+    "env": 1
+  },
+  "projects": [
+    {
+      "idx": 1,
+      "id": "17011000000045776",
+      "name": "AlienCity",
+      "domain": {
+        "id": "10063176988",
+        "name": "aliencity-809404625.development"
+      },
+      "timezone": "America/Chicago",
+      "env": [
+        {
+          "idx": 1,
+          "id": "809404625",
+          "name": "Development",
+          "type": 3
+        },
+        {
+          "idx": 2,
+          "id": "10064573681",
+          "name": "Production",
+          "type": 1
+        }
+      ]
+    }
+  ]
+}

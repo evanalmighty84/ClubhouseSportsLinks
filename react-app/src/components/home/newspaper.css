@@ -1,0 +1,619 @@
+
+
+
+p {
+    margin-top: 1em;
+    margin-bottom: 20px;
+}
+
+.head {
+    text-align: center;
+    position: relative;
+
+
+}
+
+
+.headerobjectswrapper {
+}
+
+.subhead {
+
+
+}
+
+.weatherforcastbox {
+    position: relative;
+    width: 12%;
+    left: 10px;
+    border: 3px double #2f2f2f;
+    padding: 10px 15px 10px 15px;
+    line-height: 20px;
+    display: inline-block;
+    margin: 0 50px 20px -360px;
+}
+
+.content {
+    font-size: 0;
+    line-height: 0;
+    word-spacing: -.31em;
+    display: inline-block;
+    margin: 0px 2% 0 2%;
+
+
+}
+
+.collumns {
+
+}
+
+.collumn {
+
+    font-size: 14px;
+    line-height: 1.5rem;
+    display: inline-block;
+    padding: 0 1% 0 1%;
+    vertical-align: top;
+    margin-bottom: 50px;
+    transition: all .7s;
+}
+
+.collumn + .collumn {
+
+}
+
+.collumn .headline {
+    text-align: center;
+    line-height: normal;
+    font-family: 'Playfair Display', serif;
+    display: block;
+    margin: 0 auto;
+
+
+}
+
+.collumn .headline.hl1 {
+    font-weight: 700;
+    font-size: 30px;
+    text-transform: uppercase;
+    padding: 10px 0 10px 0;
+
+}
+
+.collumn .headline.hl2 {
+    font-weight: 400;
+    font-style: italic;
+    font-size: 24px;
+    box-sizing: border-box;
+    padding: 10px 0 10px 0;
+}
+
+.collumn .headline.hl2:before {
+    border-top: 1px solid #2f2f2f;
+    content: '';
+    width: 100px;
+    height: 7px;
+    display: block;
+    margin: 0 auto;
+}
+
+.collumn .headline.hl2:after {
+    border-bottom: 1px solid #2f2f2f;
+    content: '';
+    width: 100px;
+    height: 13px;
+    display: block;
+    margin: 0 auto;
+
+}
+
+.collumn .headline.hl3 {
+    background-color: indianred;
+    border-bottom-style: solid;
+    padding-bottom: 1em;
+    border-color: brown;
+    font-weight: 800;
+    font-style: italic;
+    font-size: 24px;
+    box-sizing: border-box;
+    padding: 10px 0 10px 0;
+    border: 1px solid brown;
+    text-decoration: underline;
+    cursor: pointer;
+
+}
+
+.collumn .headline.hl4 {
+    font-weight: 700;
+    font-size: 12px;
+    box-sizing: border-box;
+    padding: 10px 0 10px 0;
+}
+
+.collumn .headline.hl4:before {
+    border-top: 1px solid #2f2f2f;
+    content: '';
+    width: 100px;
+    height: 7px;
+    display: block;
+    margin: 0 auto;
+}
+
+.collumn .headline.hl4:after {
+    border-bottom: 1px solid #2f2f2f;
+    content: '';
+    width: 100px;
+    height: 10px;
+    display: block;
+    margin: 0 auto;
+
+}
+
+.collumn .headline.hl5 {
+    font-weight: 400;
+    font-size: 42px;
+    text-transform: uppercase;
+    font-style: italic;
+    box-sizing: border-box;
+    padding: 10px 0 10px 0;
+}
+
+.collumn .headline.hl6 {
+    font-weight: 400;
+    font-size: 18px;
+    box-sizing: border-box;
+    padding: 10px 0 10px 0;
+}
+
+.collumn .headline.hl6:before {
+    border-top: 1px solid #2f2f2f;
+    content: '';
+    width: 100px;
+    height: 7px;
+    display: block;
+    margin: 0 auto;
+}
+
+.collumn .headline.hl6:after {
+    border-bottom: 1px solid #2f2f2f;
+    content: '';
+    width: 100px;
+    height: 10px;
+    display: block;
+    margin: 0 auto;
+
+}
+
+.collumn .headline.hl7 {
+    font-weight: 700;
+    font-size: 12px;
+    box-sizing: border-box;
+    display: block;
+    padding: 10px 0 10px 0;
+}
+
+.collumn .headline.hl8 {
+    font-weight: 700;
+    font-size: 12px;
+    box-sizing: border-box;
+    padding: 10px 0 10px 0;
+}
+
+.collumn .headline.hl9 {
+    font-weight: 700;
+    font-size: 12px;
+    box-sizing: border-box;
+    padding: 10px 0 10px 0;
+}
+
+.collumn .headline.hl10 {
+    font-weight: 700;
+    font-size: 12px;
+    box-sizing: border-box;
+    padding: 10px 0 10px 0;
+}
+
+.collumn .citation {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    line-height: 44px;
+    /*font-style: italic;*/
+    text-align: center;
+    font-weight: 400;
+    display: block;
+    margin: 40px 0 40px 0;
+    font-feature-settings: "liga", "dlig";
+
+}
+
+.collumn .citation:before {
+    border-top: 1px solid #2f2f2f;
+    content: '';
+    width: 100px;
+    height: 16px;
+    display: block;
+    margin: 0 auto;
+}
+
+.collumn .citation:after {
+    border-bottom: 1px solid #2f2f2f;
+    content: '';
+    width: 100px;
+    height: 16px;
+    display: block;
+    margin: 0 auto;
+}
+
+.collumn .figure {
+    margin: 0 0 20px;
+}
+
+.collumn .figcaption {
+    font-style: italic;
+    font-size: 12px;
+}
+
+/* Apply default styles to the .media class */
+.media {
+    border: 0.1em solid darkgrey;
+    -webkit-filter: sepia(80%) contrast(1) opacity(0.8);
+    filter: sepia(80%) grayscale(1) contrast(1) opacity(0.8);
+    width: 100%;
+    transition: outline 0.3s ease-in-out, filter 0.3s ease-in-out; /* Add a transition effect for outline and filter */
+}
+
+/* Apply styles on hover and focus for the .media element */
+.media:hover,
+.media:focus {
+    -webkit-filter: sepia(0%) contrast(1) opacity(0.8);
+    filter: sepia(0%) grayscale(0) contrast(1) opacity(0.8);
+    /* Change the border or outline style for focus */
+}
+
+.in-view {
+    -webkit-filter: sepia(0%) contrast(1) opacity(0.8);
+    filter: sepia(0%) grayscale(0) contrast(1) opacity(0.8);
+
+}
+
+.newspaper-description {
+    cursor: pointer;
+}
+
+.headerobjectswrapper {
+    position: relative;
+}
+
+.headerobjectswrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://res.cloudinary.com/duz4vhtcn/image/upload/v1696268242/Banner_box1cg.gif');; /* Replace with your background image URL */
+    background-size: cover;
+    opacity: 0.3; /* Opacity for the background */
+    z-index: -1; /* Place the background behind the content */
+}
+
+.side-video {
+    flex: 1 1;
+    height: calc(65vh - 34em);
+
+}
+
+.header-content {
+    text-align: right;
+    position: relative;
+    z-index: 1;
+    background-image: url('https://res.cloudinary.com/duz4vhtcn/image/upload/v1696268242/Banner_box1cg.gif');
+    background-size: cover; /* Adjust as needed */
+    /* Additional background properties as needed */
+}
+
+.middleColumnStyle {
+    display: inline-block;
+    verticalAlign: 'top';
+    margin: 0 0%;
+    flex: 8;
+
+}
+
+.sideColumnStyle {
+    display: inline-block;
+    width: 15%;
+    verticalAlign: 'top';
+    margin: 0 1%;
+    flex: 1;
+
+
+}
+
+/*________________________________________________________________________________________________________________________________*/
+/*MEDIAQUERIES*/
+@media only all and (max-width: 1300px) {
+    .weatherforcastbox {
+        display: none;
+    }
+
+
+}
+
+@media only all and (min-width: 1200px) {
+
+    .news-carouseld {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    h3 {
+        text-shadow: -0.5px -0.5px 0 #2f2f2f, 0.5px -0.5px 0 #2f2f2f, 0.5px 0.5px 0 purple, 0.5px 0.5px 0 #2f2f2f;
+        text-decoration: underline;
+        line-height: 2.5em;
+    }
+
+    .slide {
+        /*    background: linear-gradient(to right,#2f2f2f,brown);*/
+        padding-top: 2em;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        color: white;
+    }
+
+    video {
+        border-style: inset;
+        border-width: 0.2em;
+        border-color: white;
+        height: 100%;
+        display: block;
+        width: 50%;
+    }
+
+    .mobile-slide {
+        display: none
+    }
+
+}
+
+@media only all and (max-width: 1200px) {
+    .news-carouseld {
+        display: none !important;
+    }
+
+    h3 {
+        text-shadow: -0.5px -0.5px 0 #2f2f2f, 0.5px -0.5px 0 #2f2f2f, 0.5px 0.5px 0 purple, 0.5px 0.5px 0 #2f2f2f;
+        text-decoration: underline;
+        line-height: 1.5em;
+        text-align: center;
+    }
+
+    img {
+        border-style: inset;
+        border-width: 0.2em;
+        border-color: white;
+        height: 100%;
+        display: block;
+    }
+
+    video {
+        border-style: inset;
+        border-width: 0.2em;
+        border-color: white;
+        height: 100%;
+        display: block;
+    }
+
+    .mobile-news-carousel {
+        display: none
+    }
+
+    .mobile-slide {
+        background: linear-gradient(to right, #2f2f2f, brown);
+        flex: 0 0 100vw; /* This will make each slide occupy the full viewport width */
+        scroll-snap-align: start;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-sizing: border-box;
+        margin-left: 1%;
+        margin-right: 1%;
+        padding-top: 2%;
+        border-width: .1em;
+        border-bottom: none;
+        border-bottom-width: 0px;
+        border-style: solid;
+        border-top: none;
+    }
+
+    .mobile-slide img {
+        max-width: 80%;
+        height: auto;
+    }
+
+    .mobile-slide h3 {
+        color: white;
+        font-size: 1.2rem;
+    }
+
+    .mobile-slide p {
+        color: white;
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .mobile-news-carousel {
+        display: none;
+    }
+
+    .mobile-news-carousel {
+        display: none;
+    }
+
+
+    .mobile-news-carousel {
+        display: block;
+        -webkit-overflow-scrolling: touch;
+    }
+
+
+}
+
+/*@media only all and (max-width: 900px) and (max-height:500px) {
+    .collumn{
+        width: 47%;
+    }
+    .side-video {
+        flex:1;
+        width: calc(61vh - 31em);
+    }
+    .header-content{
+        height: calc(50vh - 17em);
+        width: calc(50vh - 0em);
+
+    }
+    header{
+        font-size:1em;
+        line-height: 10px;
+    }
+    .flex-vertical-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center; !* Center the items horizontally *!
+    }
+    .middleColumnStyle {
+        width: 100%; !* Adjust as needed *!
+        !* ... other styles ... *!
+    }
+
+
+}
+@media only all and (max-width: 900px) {
+    .collumn{
+        width: 47%;
+    }
+    .side-video {
+        flex:1;
+        width: calc(61vh - 31em);
+    }
+    .header-content{
+      !*  height: calc(50vh - 17em);
+       width: calc(50vh - 0em);
+*!
+    }
+    header{
+       font-size:1em;
+        line-height: 10px;
+    }
+
+
+}
+@media only all and (max-width: 600px) {
+
+    .subheadmobile{
+      font-size: 1.0em;
+
+
+    }
+    .collumn{
+        width: 100%;
+    }
+    .collumn + .collumn {
+        border-left: none;
+        border-bottom: 1px solid #2f2f2f;
+    }
+    header{
+
+        font-size: 1.5em;
+        line-height: 1em;
+        overflow: hidden;
+    }
+    !* For larger screens *!
+
+
+    !* For mobile screens *!
+!*    @media only all and (max-width: 600px) {
+        video {
+            width:100%;
+            height: 100%;
+            display: block;
+        }
+        .sideColumnStyle {
+            display: inline-block;
+            width: 100%;
+            verticalAlign: 'top';
+            margin: 0 1%;
+            flex: 1;
+
+            minHeight: 200px;
+        }
+        .flex-container {
+            flex-direction: column; !* Stack children vertically *!
+        }
+
+        .sideColumnStyle, .middleColumnStyle {
+            width:100%;
+            max-width: 100%; !* Allow all columns to take full width *!
+            margin: 10px 0; !* Add some vertical spacing between columns *!
+        }
+    }*!
+
+
+    .side-video {
+        flex: 1; !* Allow videos to grow and shrink *!
+        width: calc(61vh - 21em);
+    }
+
+
+
+
+    .header-content{
+        height: calc(65vh - 23em);
+    }
+    .subhead{
+        font-size: 1.5rem;
+    }
+
+}*/
+
+
+/* For larger screens */
+.flex-container {
+    display: flex;
+    align-items: flex-start; /* Align items to the top */
+}
+
+.sideColumnStyle {
+    flex: 1; /* Allow side columns to grow and shrink */
+    max-width: 15%; /* Set a maximum width */
+    margin: 0 1%;
+    min-height: 200px;
+}
+
+.middleColumnStyle {
+    flex: 8; /* Allow middle content to grow */
+
+
+    /*  min-height: 200px;*/
+}
+
+/* For mobile screens */
+/*@media only all and (max-width: 600px) {
+    .flex-container {
+        flex-direction: column; !* Stack children vertically *!
+    }
+
+    .sideColumnStyle, .middleColumnStyle {
+        max-width: 100%; !* Allow all columns to take full width *!
+        width: 100%; !* Explicitly set width to 100% *!
+        margin: 10px 0; !* Add some vertical spacing between columns *!
+    }
+}*/
+
+
+/* Style the rest of your content as needed */

@@ -1,0 +1,16 @@
+{
+  "functions": {
+    "targets": [
+      "sports_business_info",
+      "sports_future_info",
+      "cron_datastore_fb",
+      "cron_datastore_nofb"
+    ],
+    "ignore": [],
+    "source": "functions"
+  },
+  "client": {
+    "source": "react-app",
+    "plugin": "zcatalyst-cli-plugin-react"
+  }
+}

@@ -1,0 +1,16 @@
+/* In src/assets/css/fonts.css */
+@font-face {
+  font-family: 'YourCustomFont';
+  src: url('../src/EvanstonTavern-1893BoldInline/BourtonInline.ttf') format('truetype');
+  /* You can also define font-weight and font-style here if needed */
+}
+
+/* Apply the font to a specific class or globally */
+.evanston-tavern {
+  font-family: 'YourCustomFont', sans-serif;
+  font-weight: 100;
+}
+.basic-font{
+  font-family: 'Playfair Display', serif;
+
+}

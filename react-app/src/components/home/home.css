@@ -1,0 +1,48 @@
+.carousel-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100%; /* Adjust based on your design needs */
+}
+
+.carousel .slide {
+    transition: transform 0.5s ease-in-out; /* Smooth transform transition */
+}
+.carousel .slide {
+    transition: transform 0.5s ease-in-out; /* Smooth transform transition */
+}
+
+/* Ensure that all carousel images have a fixed size and do not scale up */
+.carousel-item img {
+    width: 100%;
+}
+/* Smooth transitions for the carousel items */
+.carousel-item {
+    transition: transform 0.6s ease-in-out; /* Smooth transition for the sliding effect */
+    float: none;
+}
+
+/* Prevent any change in size when the item becomes active */
+.carousel-item.active {
+    display: block;
+    width: 30em; /* This should match the non-active state */
+    height: auto; /* Maintain aspect ratio */
+}
+.carousel-caption {
+    position: relative; /* Change from absolute to relative */
+    top: 0; /* Reset top position */
+    transform: none; /* Remove transform */
+    color: black; /* Optional: change text color if needed */
+    background: none; /* Optional: remove any background styles if present */
+}
+
+.carousel-item {
+    padding-bottom: 4rem; /* Add padding to accommodate caption text below image */
+}
+
+
+
+
+
+
+
