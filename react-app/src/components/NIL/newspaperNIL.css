@@ -734,21 +734,19 @@ a:hover {
 }
 
 h1 {
-    font-size: 4.5vh;
-    letter-spacing: normal;
+
 
 }
 
 @media (min-width: 992px) {
     h1 {
-        font-size: 2.75em;
+
     }
 }
 
 @media (min-width: 1200px) {
     h1 {
-        font-size: 3em;
-        letter-spacing: 5px;
+
     }
 }
 

@@ -14,3 +14,9 @@
   font-family: 'Playfair Display', serif;
 
 }
+/* styles.css */
+.text-content p {
+  text-indent: 20px;     /* Indent the first line of each paragraph */
+  margin-bottom: 10px;   /* Add space between paragraphs */
+  white-space: pre-wrap; /* Maintains whitespace formatting from the content */
+}

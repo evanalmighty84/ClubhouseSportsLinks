@@ -20,25 +20,25 @@ import WaitingToJoinScreen from "../screens/WaitingToJoinScreen";
 
 
 // @ts-ignore
-const NewspaperArticles = ({newsDataIOArticles, newsDataIOArticlesNoGif, serpApiArticles, serpApiArticlesNoGif}) => {
+const NewspaperArticles = ({ serpApiArticles, serpApiArticlesNoGif}) => {
     const [weather, setWeather] = useState('Plenty of Sunshine'); // Example weather state
 
 
     const navigate = useNavigate();
     const {setSelectedArticle} = useContext(ArticleContext);
 
-    const navigateToNIL = (article: { NIL: { video1: string; video2: string; video3: string; title: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; url: string | undefined; description: boolean } }) => {
+    const navigateToYouthSports = (article: { YouthSports: { video1: string; video2: string; video3: string; title: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; url: string | undefined; description: boolean } }) => {
         // @ts-ignore
         setSelectedArticle(article); // set the clicked article
 
-        navigate("/app/NilDetails");
+        navigate("/app/YouthSportsDetails");
         // Navigation code to the Localsports component goes here...
     }
-    const navigateToNILNoGif = (article: { NILNoGif: { video1: string; video2: string; video3: string; title: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; url: string | undefined; description: boolean } }) => {
+    const navigateToYouthSportsNoGif = (article: { YouthSportsNoGif: { video1: string; video2: string; video3: string; title: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; url: string | undefined; description: boolean } }) => {
         // @ts-ignore
         setSelectedArticle(article); // set the clicked article
 
-        navigate("/app/NILDetails");
+        navigate("/app/YouthSportsDetails");
         // Navigation code to the Localsports component goes here...
     }
 
@@ -48,7 +48,7 @@ const NewspaperArticles = ({newsDataIOArticles, newsDataIOArticlesNoGif, serpApi
 
     if (!Array.isArray(serpApiArticles)) {
         // Handle the case when articles are not in the correct format
-        return <div><WaitingToJoinScreen/></div>;
+        return <div>waiting for youth sports articles</div>;
     }
 
 
@@ -56,7 +56,7 @@ const NewspaperArticles = ({newsDataIOArticles, newsDataIOArticlesNoGif, serpApi
     return (
         <div>
             <hr/>
-            <div className="NIL-head">
+            <div className="YouthSports-head">
                 <div className="headerobjectswrapper">
                     <div className="flex-container"> {/* Flex container */}
                         <div className="middleColumnStyle">
@@ -72,15 +72,15 @@ const NewspaperArticles = ({newsDataIOArticles, newsDataIOArticlesNoGif, serpApi
 
                     <div style={{textAlign: "center", flex: "1"}}>
                         <h1 className="subheadmobile" style={{
-                            background: 'linear-gradient(to right,#2f2f2f,#008B00',
+                            background: 'linear-gradient(to right,#2f2f2f,#de4e7f',
                             margin: ".5em 0 0em",
-                            borderTop: '.1em solid #008B00',
+                            borderTop: '.1em solid #de4e7f',
                             borderBottom: '0.1em solid white',
-                            backgroundColor: '#008B00',
+                            backgroundColor: '#de4e7f',
                             fontSize: '1.5rem',
                             marginBottom: "1em",
                             letterSpacing: "normal"
-                        }}>Latest NIL News</h1>
+                        }}>Latest Youth Sports News</h1>
                     </div>
                 </div>
                 {/* <video style={{width:'100%',backgroundColor:'skyblue',margin: '1% 1% 1% 0%',
@@ -94,29 +94,29 @@ const NewspaperArticles = ({newsDataIOArticles, newsDataIOArticlesNoGif, serpApi
 
                     <div className="collumns">
                         {Array.isArray(serpApiArticles) && serpApiArticles.length > 0 ? (
-                            serpApiArticles.map((article: { NIL: { video1: string; video2: string; video3: string; title: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; url: string | undefined; description: boolean }; }, index: number) => (
+                            serpApiArticles.map((article: { YouthSports: { video1: string; video2: string; video3: string; title: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; url: string | undefined; description: boolean }; }, index: number) => (
                                 <div key={index} className="collumn">
                                     <div className="head">
                                         <span className="headline hl3 "
                                               style={{
                                                   borderColor:'white',
-                                                  backgroundColor: '#008B00',
+                                                  backgroundColor: '#de4e7f',
                                                   borderStyle: 'solid',
                                                   padding:'1em',
                                                   fontWeight: '800',
                                                   fontStyle: 'italic',
                                                   fontSize: '24px',
                                                   boxSizing: 'border-box',
-                                              }}>{article.NIL.title}</span>
-                                        {console.log('HERE IS THE TITLE!!!!' + article.NIL.title)}
+                                              }}>{article.YouthSports.title}</span>
+                                        {console.log('HERE IS THE TITLE!!!!' + article.YouthSports.title)}
                                     </div>
 
                                     {index < serpApiArticles.length && (
                                         <InView>
                                             {({inView, ref}) => (
-                                                <img onClick={() => navigateToNIL(article)}
+                                                <img onClick={() => navigateToYouthSports(article)}
                                                      className={`media ${inView ? 'in-view' : ''}`}
-                                                     src={article.NIL.url}
+                                                     src={article.YouthSports.url}
                                                      style={{    borderColor: 'white',
                                                          borderWidth: '0.2em'}}
                                                      alt=""
@@ -125,7 +125,7 @@ const NewspaperArticles = ({newsDataIOArticles, newsDataIOArticlesNoGif, serpApi
                                             )}
                                         </InView>
                                     )}
-                                    <p className="newspaper-description">{article.NIL.description}</p>
+                                    <p className="newspaper-description">{article.YouthSports.description}</p>
                                 </div>
                             ))
                         ) : (
@@ -133,28 +133,28 @@ const NewspaperArticles = ({newsDataIOArticles, newsDataIOArticlesNoGif, serpApi
                         )}
 
                         {Array.isArray(serpApiArticlesNoGif) && serpApiArticlesNoGif.length > 0 ? (
-                            serpApiArticlesNoGif.map((article: { NILNoGif: { video1: string; video2: string; video3: string; title: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; url: string | undefined; description: boolean }; }, index: number) => (
+                            serpApiArticlesNoGif.map((article: { YouthSportsNoGif: { video1: string; video2: string; video3: string; title: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; url: string | undefined; description: boolean }; }, index: number) => (
                                 <div key={index} className="collumn">
                                     <div className="head">
                                         <span className="headline hl3"
                                               style={{
                                                   borderColor:'white',
-                                                  backgroundColor: '#008B00',
+                                                  backgroundColor: '#de4e7f',
                                                   borderStyle: 'solid',
                                                   padding:'1em',
                                                   fontWeight: '800',
                                                   fontStyle: 'italic',
                                                   fontSize: '24px',
                                                   boxSizing: 'border-box',
-                                              }}>{article.NILNoGif.title}</span>
+                                              }}>{article.YouthSportsNoGif.title}</span>
                                     </div>
 
                                     {index < serpApiArticlesNoGif.length && (
                                         <InView>
                                             {({inView, ref}) => (
-                                                <img onClick={() => navigateToNILNoGif(article)}
+                                                <img onClick={() => navigateToYouthSportsNoGif(article)}
                                                      className={`media ${inView ? 'in-view' : ''}`}
-                                                     src={article.NILNoGif.url}
+                                                     src={article.YouthSportsNoGif.url}
                                                      style={{    borderColor: 'white',
                                                          borderWidth: '0.2em'}}
                                                      alt=""
@@ -163,7 +163,7 @@ const NewspaperArticles = ({newsDataIOArticles, newsDataIOArticlesNoGif, serpApi
                                             )}
                                         </InView>
                                     )}
-                                    <p className="newspaper-description">{article.NILNoGif.description}</p>
+                                    <p className="newspaper-description">{article.YouthSportsNoGif.description}</p>
                                 </div>
                             ))
                         ) : (

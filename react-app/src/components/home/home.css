@@ -29,10 +29,12 @@
     height: auto; /* Maintain aspect ratio */
 }
 .carousel-caption {
+    left:0%;
+    right:0%;
     position: relative; /* Change from absolute to relative */
     top: 0; /* Reset top position */
     transform: none; /* Remove transform */
-    color: black; /* Optional: change text color if needed */
+    color: white; /* Optional: change text color if needed */
     background: none; /* Optional: remove any background styles if present */
 }
 

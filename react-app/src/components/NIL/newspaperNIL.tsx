@@ -21,7 +21,7 @@ import WaitingToJoinScreen from "../screens/WaitingToJoinScreen";
 
 
 // @ts-ignore
-const NewspaperArticles = ({newsDataIOArticles, newsDataIOArticlesNoGif, serpApiArticles, serpApiArticlesNoGif}) => {
+const NewspaperArticles = ({ serpApiArticles, serpApiArticlesNoGif}) => {
     const [weather, setWeather] = useState('Plenty of Sunshine'); // Example weather state
 
 
@@ -49,7 +49,7 @@ const NewspaperArticles = ({newsDataIOArticles, newsDataIOArticlesNoGif, serpApi
 
     if (!Array.isArray(serpApiArticles)) {
         // Handle the case when articles are not in the correct format
-        return <div><WaitingToJoinScreen/></div>;
+        return <div>waiting for nil articles</div>;
     }
 
 

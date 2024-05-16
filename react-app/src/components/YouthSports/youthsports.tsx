@@ -1,26 +1,20 @@
-import React, {useEffect, useState} from 'react';
-import axios from "axios"
+import React, { useEffect, useState } from 'react';
+import axios from "axios";
 import NewspaperArticles from "./newspaperYouthSports";
-
 
 const YouthSports = () => {
 
-    const [urlResultLink, setUrlResultLink] = useState([]);
-    const [urlResultImage, setUrlResultImage] = useState([]);
-    const [heroUrl, setHeroUrl] = useState('');
-    const [articleObject, setArticleObject] = useState({});
-    const [newsObject, setNewsObject] = useState({});
-    const [newsPaperObject, setNewsPaperObject] = useState({});
-    const [newsPaperObjectB, setNewsPaperObjectB] = useState({});
     const [newsPaperObject2, setNewsPaperObject2] = useState({});
     const [newsPaperObject2B, setNewsPaperObject2B] = useState({});
-    const containerStyle: React.CSSProperties = {
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+    const youthSportsContainerStyle: React.CSSProperties = {
         display: 'flex',
         color: 'white',
         paddingTop: '1em'
     };
 
-    const columnStyle1: React.CSSProperties = {
+    const youthSportsColumnStyle1: React.CSSProperties = {
         borderRightStyle: 'solid',
         marginRight: '1em',
         padding: '.5em',
@@ -28,18 +22,19 @@ const YouthSports = () => {
         display: 'flex',
         justifyContent: 'start',
         marginTop: '1em'
-
     };
-    const columnStyle2: React.CSSProperties = {
+
+    const youthSportsColumnStyle2: React.CSSProperties = {
         flex: '1',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'steelblue',
+        backgroundColor: '#2f2f2f',
         marginTop: '1em',
         borderRadius: '.1em'
     };
-    const columnStyle3: React.CSSProperties = {
+
+    const youthSportsColumnStyle3: React.CSSProperties = {
         borderLeftStyle: 'solid',
         marginLeft: '1em',
         padding: '.5em',
@@ -47,9 +42,9 @@ const YouthSports = () => {
         display: 'flex',
         justifyContent: 'end',
         marginTop: '1em'
-
     };
-    const timelineStyle: React.CSSProperties = {
+
+    const youthSportsTimelineStyle: React.CSSProperties = {
         display: 'flex',
         flexDirection: 'column',
         maxWidth: '100%',
@@ -57,7 +52,7 @@ const YouthSports = () => {
         marginBottom: '0px',
     };
 
-    const iframeStyle: React.CSSProperties = {
+    const youthSportsIframeStyle: React.CSSProperties = {
         position: 'static',
         visibility: 'visible',
         display: 'block',
@@ -67,47 +62,37 @@ const YouthSports = () => {
         overflow: 'auto',
     };
 
-    /* API function response schema  "YouthSportsNewspaper": details1,
-            "NILNewspaper": details2,
-            "banner": details3,
-            "YouthSportsNoGifNewspaper": details4,
-            "NILNoGifNewspaper": details5,*/
+    const hideColumnsStyle: React.CSSProperties = {
+        display: windowWidth < 1076 ? 'none' : 'flex', // Hide the columns when width is below 576px
+    };
 
     useEffect(() => {
-        axios.get(`/server/sports_info_table_source/fetchData`)
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth);
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+    useEffect(() => {
+        axios.get(`/server/sports_future_info/fetchData`)
             .then(response => {
-                console.log('is the whole response here' + JSON.stringify(response.data))
-
-                // const mediumArticles = response.data
-// @ts-ignore
-                setNewsPaperObject(response.data.YouthSportsNewspaper)
-                console.log('updated  youth sports newspaper object with gifs!' + JSON.stringify(newsPaperObject))
-
-                setNewsPaperObjectB(response.data.YouthSportsNoGifNewspaper)
-                console.log('updated  youth sports newspaper object with normal pics!' + JSON.stringify(newsPaperObjectB))
-
-                setNewsPaperObject2(response.data.NILNewspaper)
-                console.log('updated Sportstechnologystocks newspaper object with gifs ! from serp' + JSON.stringify(newsPaperObject2))
-
-                setNewsPaperObject2B(response.data.NILNoGifNewspaperr)
-                console.log('updated Sportstechnologystocks newspaper object with normal pics! from serp' + JSON.stringify(newsPaperObject2B))
-                /* setHeroUrl(response.data.banner[0].BannerImages.url)
-                 console.log('here is this new banner' + JSON.stringify(heroUrl))*/
-// @ts-ignore
-
-                // @ts-ignore
-                //  setLoading(false);
+                setNewsPaperObject2(response.data.YouthSportsNewspaper);
+                setNewsPaperObject2B(response.data.YouthSportsNoGifNewspaper);
             })
-            .catch((error: { message: any; }) => {
+            .catch(error => {
                 alert(error.message);
-                // setLoading(false);
             });
-    }, [])
+    }, []);
 
     return (
-        <div style={containerStyle}>
-            <div style={columnStyle1}>
-                <div className="twitter-timeline twitter-timeline-rendered" style={timelineStyle}>
+        <div style={youthSportsContainerStyle}>
+            <div style={windowWidth < 1076 ? hideColumnsStyle : youthSportsColumnStyle1}>
+                <div className="twitter-timeline twitter-timeline-rendered" style={youthSportsTimelineStyle}>
                     <iframe
                         id="twitter-widget-0"
                         scrolling="no"
@@ -115,22 +100,22 @@ const YouthSports = () => {
                         allowTransparency
                         allowFullScreen
                         className=""
-                        style={iframeStyle}
+                        style={youthSportsIframeStyle}
                         title="Twitter Timeline"
                         src="https://syndication.twitter.com/srv/timeline-profile/screen-name/GenXMediaGuide?dnt=false&amp;embedId=twitter-widget-0&amp;features=..."
                     ></iframe>
                 </div>
             </div>
-            <div style={columnStyle2}>
-                <div className="twitter-timeline twitter-timeline-rendered" style={timelineStyle}>
-                    <NewspaperArticles serpApiArticles={newsPaperObject2}
-                                       newsDataIOArticles={newsPaperObject}
-                                       serpApiArticlesNoGif={newsPaperObject2B}
-                                       newsDataIOArticlesNoGif={newsPaperObjectB}/>
+            <div style={youthSportsColumnStyle2}>
+                <div className="twitter-timeline twitter-timeline-rendered" style={youthSportsTimelineStyle}>
+                    <NewspaperArticles
+                        serpApiArticles={newsPaperObject2}
+                        serpApiArticlesNoGif={newsPaperObject2B}
+                    />
                 </div>
             </div>
-            <div style={columnStyle3}>
-                <div className="twitter-timeline twitter-timeline-rendered" style={timelineStyle}>
+            <div style={windowWidth < 1076 ? hideColumnsStyle : youthSportsColumnStyle3}>
+                <div className="twitter-timeline twitter-timeline-rendered" style={youthSportsTimelineStyle}>
                     <iframe
                         id="twitter-widget-2"
                         scrolling="no"
@@ -138,7 +123,7 @@ const YouthSports = () => {
                         allowTransparency
                         allowFullScreen
                         className=""
-                        style={iframeStyle}
+                        style={youthSportsIframeStyle}
                         title="Twitter Timeline"
                         src="https://syndication.twitter.com/srv/timeline-profile/screen-name/GenXMediaGuide?dnt=false&amp;embedId=twitter-widget-2&amp;features=..."
                     ></iframe>

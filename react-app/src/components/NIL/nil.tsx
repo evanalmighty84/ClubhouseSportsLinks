@@ -85,7 +85,7 @@ const NIL = () => {
     }, []);
 
     useEffect(() => {
-        axios.get(`/server/sports_info_table_source/fetchData`)
+        axios.get(`/server/sports_future_info/fetchData`)
             .then(response => {
                 setNewsPaperObject(response.data.NILNewspaper);
                 setNewsPaperObjectB(response.data.NILNoGifNewspaper);
@@ -118,9 +118,7 @@ const NIL = () => {
                 <div className="twitter-timeline twitter-timeline-rendered" style={nilTimelineStyle}>
                     <NewspaperArticles
                         serpApiArticles={newsPaperObject2}
-                        newsDataIOArticles={newsPaperObject}
                         serpApiArticlesNoGif={newsPaperObject2B}
-                        newsDataIOArticlesNoGif={newsPaperObjectB}
                     />
                 </div>
             </div>
