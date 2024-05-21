@@ -130,27 +130,38 @@ const SportsOwnershipDetails = () => {
 
     return (
         <Container style={{padding: '0px'}}>
-            <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap',  background: 'linear-gradient(to top,#2f2f2f,Brown',borderColor:'brown'}}>
-            {selectedArticle.SportsOwnershipNoGif ?     <iframe
-                key="video1"
-                title="YouTube Video"
-                width="600"
-                height="400"
-                src={selectedArticle.SportsOwnership.video1}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                style={{border: 'none'}}
-            ></iframe> :     <iframe
-                key="video1"
-                title="YouTube Video"
-                width="600"
-                height="400"
-                src={selectedArticle.SportsOwnership.video1}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                style={{border: 'none'}}
-            ></iframe>}
-            </div>
+            {
+                selectedArticle.SportsOwnershipNoGif && selectedArticle.SportsOwnershipNoGif.video1 ? (
+                    <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', background: 'linear-gradient(to top,#2f2f2f,brown', borderColor: 'brown' }}>
+                        <iframe
+                            key="video1"
+                            title="YouTube Video"
+                            width="600"
+                            height="400"
+                            src={selectedArticle.SportsOwnershipNoGif.video1}
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                            style={{ border: 'none' }}
+                        ></iframe>
+                    </div>
+                ) : selectedArticle.SportsOwnership && selectedArticle.SportsOwnership.video1 ? (
+                    <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', background: 'linear-gradient(to top,#2f2f2f,brown', borderColor: 'brown' }}>
+                        <iframe
+                            key="video1"
+                            title="YouTube Video"
+                            width="600"
+                            height="400"
+                            src={selectedArticle.SportsOwnership.video1}
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                            style={{ border: 'none' }}
+                        ></iframe>
+                    </div>
+                ) : (
+                    ''
+                )
+            }
+
 
 
             <h1 className="subheadmobile" style={{

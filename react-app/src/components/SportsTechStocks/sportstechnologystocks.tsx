@@ -3,11 +3,7 @@ import axios from "axios";
 import NewspaperArticles from "./newspaperSportsTechnologyStocks";
 
 const SportsTechnologyStocks = () => {
-    const [urlResultLink, setUrlResultLink] = useState([]);
-    const [urlResultImage, setUrlResultImage] = useState([]);
-    const [heroUrl, setHeroUrl] = useState('');
-    const [articleObject, setArticleObject] = useState({});
-    const [newsObject, setNewsObject] = useState({});
+
     const [newsPaperObject, setNewsPaperObject] = useState({});
     const [newsPaperObjectB, setNewsPaperObjectB] = useState({});
     const [newsPaperObject2, setNewsPaperObject2] = useState({});
@@ -85,7 +81,7 @@ const SportsTechnologyStocks = () => {
     }, []);
 
     useEffect(() => {
-        axios.get(`/server/sports_info_table_source/fetchData`)
+        axios.get(`/server/sports_future_info/fetchData`)
             .then(response => {
                 setNewsPaperObject(response.data.SportsTechnologyStockNewspaper);
                 setNewsPaperObjectB(response.data.SportsTechnologyStockNoGifNewspaper);

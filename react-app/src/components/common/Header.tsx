@@ -154,7 +154,7 @@ const Header = () => {
 
     return (
         <div className="headerSection">
-            <Navbar className={`menu-container ${isHeaderExpanded ? 'open' : ''}`} onToggle={handleToggle} expanded={isHeaderExpanded} variant="light" collapseOnSelect expand="sm">
+            <Navbar className={`menu-container ${isHeaderExpanded ? 'open' : ''}`} onToggle={handleToggle} expanded={isHeaderExpanded} variant="dark" collapseOnSelect expand="sm">
                 <Navbar.Toggle
                     className="custom-toggler"
                     style={{

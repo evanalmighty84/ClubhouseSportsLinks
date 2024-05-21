@@ -3,6 +3,7 @@ import axios from 'axios';
 import {GoogleLogin} from "@react-oauth/google";
 import {useNavigate} from 'react-router-dom';
 import RegistrationForm from '../TeamStream/registration'
+import Gif from '../appstore-login/TeamStreamFinal.gif'
 import {Route, redirect} from 'react-router-dom';
 import TeamStream from "../TeamStream/teamstream"
 
@@ -19,7 +20,7 @@ const AppStore = () => {
     const handleSuccess = async (response: any) => {
         try {
             const idToken = response.credential; // Access the credential directly
-            const backendResponse = await axios.post(`/server/alien_city_function/api/login`, {idToken});
+            const backendResponse = await axios.post(`/server/sports_business_info/api/login`, {idToken});
             const {accessToken} = backendResponse.data; // Corrected variable name
             const {teamName} = backendResponse.data; // Corrected variable name
             const {permission} = backendResponse.data;
@@ -34,11 +35,12 @@ const AppStore = () => {
             setEmail(email);// Set the access token state
             setPermission(permission)
             setMeetingId(meetingId)
-            setLeagueName(leagueName)
+            setLeagueName('Prestonwood Soccer')
             // Redirect or perform other actions after successful login
             console.log('Organizer response is', response);
             console.log('Organizer accessToken is ', accessToken)
-            console.log('Organizer team name is ', teamName); // Log the access token; // Log the access token
+            console.log('Organizer team name is ', teamName);
+            console.log('Organizer league is ', leagueName);//
             console.log('Organizer permission is ', permission)
             if (!permission) {
                 // If permission is false, show the registration form
@@ -65,7 +67,7 @@ const AppStore = () => {
 
 
     useEffect(() => {
-        if (accessToken && teamName && permission && email) {
+        if (accessToken && teamName && permission && email && leagueName) {
             navigate(`/app/teamStream/${leagueName}/${teamName}`, {
                 state: {
                     email,
@@ -86,6 +88,18 @@ const AppStore = () => {
 
         <div>
             <h1> Team Stream Login</h1>
+            <div className="hero-container">
+                <img src={Gif} style={{width:'100%'}} alt="Youth Sports" className="hero-video"  />
+
+
+                <div className="hero-content" style={{ backgroundColor: 'rgb(47, 47, 47)', color: 'white' }}>
+
+                <div className="teamstream-content-container"> With the touch of a button you can create your own
+                        virtual outdoor zoom with all of room for all of your team parents. Never before seen angles are
+                        at your disposal with everyone streaming from different angles to your cloud device.
+                    </div>
+                </div>
+            </div>
             <GoogleLogin
                 // @ts-ignore
                 clientId="179478627002-th39iebli3b17dg5mkj4vu32sneo8mt9.apps.googleusercontent.com"

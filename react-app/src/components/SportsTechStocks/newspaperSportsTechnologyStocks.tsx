@@ -8,7 +8,6 @@ import './newspaperSportsTechnologyStocks.css';
 import path from 'path';
 // @ts-ignore
 import {InView} from 'react-intersection-observer';
-import TodaysDate from "../common/TodaysDate";
 import {Link} from "react-router-dom";
 
 // @ts-ignore
@@ -64,7 +63,7 @@ const NewspaperArticles = ({newsDataIOArticles, newsDataIOArticlesNoGif, serpApi
                     <div className="flex-container"> {/* Flex container */}
                         <div className="middleColumnStyle">
                             <div className="header-content middle-content">
-                                <header>Name Image Likeness<br/>News<Link to="/app/signup"> </Link></header>
+                                <header>Sports Technology Stocks<br/>News<Link to="/app/signup"> </Link></header>
                             </div>
 
                         </div>
@@ -75,15 +74,15 @@ const NewspaperArticles = ({newsDataIOArticles, newsDataIOArticlesNoGif, serpApi
 
                     <div style={{textAlign: "center", flex: "1"}}>
                         <h1 className="subheadmobile" style={{
-                            background: 'linear-gradient(to right,#2f2f2f,#008B00',
+                            background: 'linear-gradient(to right,#2f2f2f,cadetblue',
                             margin: ".5em 0 0em",
-                            borderTop: '.1em solid #008B00',
+                            borderTop: '.1em solid cadetblue',
                             borderBottom: '0.1em solid white',
-                            backgroundColor: '#008B00',
+                            backgroundColor: 'cadetblue',
                             fontSize: '1.5rem',
                             marginBottom: "1em",
                             letterSpacing: "normal"
-                        }}>Latest Sportstechnologystocks News</h1>
+                        }}>Latest Sports Technology Stocks News</h1>
                     </div>
                 </div>
                 {/* <video style={{width:'100%',backgroundColor:'skyblue',margin: '1% 1% 1% 0%',
@@ -103,7 +102,7 @@ const NewspaperArticles = ({newsDataIOArticles, newsDataIOArticlesNoGif, serpApi
                                         <span className="headline hl3 "
                                               style={{
                                                   borderColor:'white',
-                                                  backgroundColor: '#008B00',
+                                                  backgroundColor: 'cadetblue',
                                                   borderStyle: 'solid',
                                                   padding:'1em',
                                                   fontWeight: '800',
@@ -142,7 +141,7 @@ const NewspaperArticles = ({newsDataIOArticles, newsDataIOArticlesNoGif, serpApi
                                         <span className="headline hl3"
                                               style={{
                                                   borderColor:'white',
-                                                  backgroundColor: '#008B00',
+                                                  backgroundColor: 'cadetblue',
                                                   borderStyle: 'solid',
                                                   padding:'1em',
                                                   fontWeight: '800',

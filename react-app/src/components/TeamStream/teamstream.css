@@ -1,0 +1,100 @@
+.card{
+ color: #2f2f2f;
+ margin-bottom:3em;
+}
+.roku-card-header{
+ background-color: #6f1ab1;
+ color:white;
+ text-align: center;
+ border-width: 1em;
+ border-style: revert;
+}
+.teamstream-card-header{
+ background-color: orange;
+ color:white;
+ text-align: center;
+}
+.roku-c-body{
+ height:16em;
+ background-color:#2f2f2f;
+ color:white;
+ border-width: .3em;
+ border-style: solid;
+ border-color:chartreuse;
+}
+.roku-row{
+ margin-bottom: 5em;
+}
+.button-spacing .btn:not(:last-child) {
+ margin-right: 1em;  /* Right margin of 1em */
+}
+.teamstream-card-container{
+ background-color: #2f2f2f;
+ border-color: chartreuse;
+}
+.teamstream-card-info{
+ background-color: orange;
+color:white;
+ border-color: white;
+ border-style: solid;
+ font-weight: 800;
+}
+.container {
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: space-between;
+}
+
+.column {
+ flex: 1;
+ min-width: 250px; /* Minimum width for each column to avoid squeezing too much */
+ margin: 10px;
+}
+
+.button-group button {
+ display: block;
+ width: 100%;
+ margin-top: 10px;
+ padding: 8px;
+ border: none;
+ border-radius: 4px;
+ background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+ color: white;
+ font-size: 16px;
+ cursor: pointer;
+}
+
+.button-group button:hover {
+ opacity: 0.8;
+}
+.roku-channel-container{
+ border-color:#de4e7f;
+ corder-width: .2em;
+ border-style: solid;
+}
+.roku-channels-card-body{
+ background-color: #2f2f2f;
+ color: white;
+}
+.roku-selection {
+ text-decoration: none;
+ text-align: center;
+}
+@media only all and (max-width: 1200px) {
+
+ img {
+  border:none
+ }
+}
+
+
+@media (max-width: 768px) {
+ .container {
+  flex-direction: column;
+ }
+
+ .column {
+  width: 100%; /* Each column takes full width on small screens */
+ }
+}
+

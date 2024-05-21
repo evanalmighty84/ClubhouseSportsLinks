@@ -2,6 +2,7 @@
 import React, {CSSProperties, useState, useEffect} from 'react';
 import {useContext} from 'react';
 import {useNavigate} from 'react-router-dom';
+import WaitingToJoinScreen from '../screens/WaitingToJoinScreen'
 import axios from 'axios';
 import {Carousel} from 'react-responsive-carousel';
 import './newspaperNIL.css';
@@ -17,7 +18,6 @@ import {Link} from "react-router-dom";
 import guyImage from "../Banner_Image.gif";
 
 import {ArticleContext} from "../../App";
-import WaitingToJoinScreen from "../screens/WaitingToJoinScreen";
 
 
 // @ts-ignore
@@ -49,7 +49,7 @@ const NewspaperArticles = ({ serpApiArticles, serpApiArticlesNoGif}) => {
 
     if (!Array.isArray(serpApiArticles)) {
         // Handle the case when articles are not in the correct format
-        return <div>waiting for nil articles</div>;
+        return <div><WaitingToJoinScreen/></div>;
     }
 
 

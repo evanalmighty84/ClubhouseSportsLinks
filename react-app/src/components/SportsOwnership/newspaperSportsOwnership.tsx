@@ -4,6 +4,7 @@ import {useContext} from 'react';
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import {Carousel} from 'react-responsive-carousel';
+import WaitingToJoinScreen from '../screens/WaitingToJoinScreen'
 import './newspaperSportsOwnership.css';
 import path from 'path';
 // @ts-ignore
@@ -17,7 +18,7 @@ import {Link} from "react-router-dom";
 import guyImage from "../Banner_Image.gif";
 
 import {ArticleContext} from "../../App";
-import WaitingToJoinScreen from "../screens/WaitingToJoinScreen";
+
 
 
 // @ts-ignore
@@ -50,7 +51,7 @@ const NewspaperArticles = ({ serpApiArticles, serpApiArticlesNoGif}) => {
     if (!Array.isArray(serpApiArticles)) {
         // Handle the case when articles are not in the correct format
       /*  return <div><WaitingToJoinScreen/></div>;*/
-        <div><p>waiting to return articles</p></div>
+        <div><WaitingToJoinScreen/></div>
     }
 
 
@@ -122,7 +123,7 @@ const NewspaperArticles = ({ serpApiArticles, serpApiArticlesNoGif}) => {
                                 </div>
                             ))
                         ) : (
-                            <div>No articles available</div>
+                            <div>{''}</div>
                         )}
 
                         {Array.isArray(serpApiArticlesNoGif) && serpApiArticlesNoGif.length > 0 ? (
@@ -160,7 +161,7 @@ const NewspaperArticles = ({ serpApiArticles, serpApiArticlesNoGif}) => {
                                 </div>
                             ))
                         ) : (
-                            <div>No articles available</div>
+                            <div>{''}</div>
                         )}
                     </div>
 

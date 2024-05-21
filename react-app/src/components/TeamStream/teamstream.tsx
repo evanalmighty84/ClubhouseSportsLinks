@@ -1,6 +1,7 @@
 // @ts-nocheck
 import React, {useEffect, useState} from 'react';
 import {useParams, useLocation} from 'react-router-dom';
+import Dashboard from "./Dashboard";
 import Videofeed from './videofeed'
 import Videofeedready from "./videofeedready";
 import axios from "axios";
@@ -10,8 +11,8 @@ const TeamStream = ({accessToken, streamingPermission}) => {
     const {teamName, leagueName} = useParams();
     const location = useLocation();
     const email = location.state.email
-    console.log('here is the email', email)
-
+    console.log('here is the email from team stream compponent', email)
+    console.log('here is the teamName from team stream component', teamName, leagueName)
 
     useEffect(() => {
         const checkForMeetingIdToBackend = async (teamName, leagueName) => {
@@ -22,7 +23,7 @@ const TeamStream = ({accessToken, streamingPermission}) => {
                     leagueName: leagueName
                 };
 
-                const response = await axios.post('/server/alien_city_function/api/checkMeetingId', data);
+                const response = await axios.post('/server/sports_business_info/api/checkMeetingId', data);
                 console.log('Response from backend:', response.data);
                 const {meetingId} = response.data
                 setMeetingId(meetingId)
@@ -39,14 +40,13 @@ const TeamStream = ({accessToken, streamingPermission}) => {
     // Component logic
     return (
         <div>
-            <h1>Hello {email} from team stream {teamName}</h1>
-            <h1> Your league is {leagueName}</h1>
-            {meetingId && <div><h1>Meeting ID: {meetingId}</h1>
+
+            {/*{meetingId && <div><h1>Meeting ID: {meetingId}</h1>
                 <Videofeedready teamName={teamName} email={email} meetingId={meetingId}/></div>}
 
             <h1>new stuff</h1>
-            {!meetingId && <Videofeed teamName={teamName} email={email}/>}
-
+            {!meetingId && <Videofeed teamName={teamName} email={email}/>}*/}
+<Dashboard Email={email} LeagueName={leagueName} TeamName={teamName}/>
         </div>
 
     );

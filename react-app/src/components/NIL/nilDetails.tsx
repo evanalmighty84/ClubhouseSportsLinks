@@ -130,27 +130,38 @@ const NILDetails = () => {
 
     return (
         <Container style={{padding: '0px'}}>
-            <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap',  background: 'linear-gradient(to top,#2f2f2f,#008B00',borderColor:'#008B00'}}>
-                {selectedArticle.NILNoGif ?     <iframe
-                    key="video1"
-                    title="YouTube Video"
-                    width="600"
-                    height="400"
-                    src={selectedArticle.NIL.video1}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    style={{border: 'none'}}
-                ></iframe> :     <iframe
-                    key="video1"
-                    title="YouTube Video"
-                    width="600"
-                    height="400"
-                    src={selectedArticle.NIL.video1}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    style={{border: 'none'}}
-                ></iframe>}
-            </div>
+            {
+                selectedArticle.NILNoGif && selectedArticle.NILNoGif.video1 ? (
+                    <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', background: 'linear-gradient(to top,#2f2f2f,#008B00', borderColor: '#008B00' }}>
+                        <iframe
+                            key="video1"
+                            title="YouTube Video"
+                            width="600"
+                            height="400"
+                            src={selectedArticle.NILNoGif.video1}
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                            style={{ border: 'none' }}
+                        ></iframe>
+                    </div>
+                ) : selectedArticle.NIL && selectedArticle.NIL.video1 ? (
+                    <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', background: 'linear-gradient(to top,#2f2f2f,#008B00', borderColor: '#008B00' }}>
+                        <iframe
+                            key="video1"
+                            title="YouTube Video"
+                            width="600"
+                            height="400"
+                            src={selectedArticle.NIL.video1}
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                            style={{ border: 'none' }}
+                        ></iframe>
+                    </div>
+                ) : (
+                    ''
+                )
+            }
+
 
 
             <h1 className="subheadmobile" style={{

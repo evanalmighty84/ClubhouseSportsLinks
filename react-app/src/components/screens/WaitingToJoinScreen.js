@@ -7,7 +7,7 @@ import useIsMobile from "../hooks/useIsMobile";
 
 const WaitingToJoinScreen = () => {
     const waitingMessages = [
-        {index: 0, text: "Creating a room for you..."},
+        {index: 0, text: "Loading"},
         {index: 1, text: "Almost there..."},
     ];
     const [message, setMessage] = useState(waitingMessages[0]);

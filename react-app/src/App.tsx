@@ -44,13 +44,11 @@ interface AppState {
   selectedArticle: any | null //
 }
 
-
 export const ArticleContext = React.createContext<ArticleContextType>({
   selectedArticle: null,
   setSelectedArticle: () => {
   }
 });
-
 
 class App extends Component<AppProps, AppState> {
   constructor(props: AppProps) {
@@ -95,7 +93,7 @@ class App extends Component<AppProps, AppState> {
                   <Route path="/app/localSportsNews" element={<LocalSports/>}/>
                   <Route path="/app/AppStore" element={<Appstore/>}/>
                   <Route path="/app/contact" element={<ContactPage/>}/>
-                  <Route path="/app/teamstream/:leagueName/:teamName"
+                  <Route path="/app/teamStream/:leagueName/:teamName"
                          element={<TeamStream accessToken={''} streamingPermission={''}/>}/>
 
                 </Routes>

@@ -130,27 +130,37 @@ const YouthSportsDetails = () => {
 
     return (
         <Container style={{padding: '0px'}}>
-            <div style={{display: 'flex', justifyContent: 'center', flexWrap: 'wrap',  background: 'linear-gradient(to top,#2f2f2f,#de4e7f',borderColor:'#de4e7f'}}>
-                {selectedArticle.YouthSportsNoGif ?     <iframe
-                    key="video1"
-                    title="YouTube Video"
-                    width="600"
-                    height="400"
-                    src={selectedArticle.YouthSports.video1}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    style={{border: 'none'}}
-                ></iframe> :     <iframe
-                    key="video1"
-                    title="YouTube Video"
-                    width="600"
-                    height="400"
-                    src={selectedArticle.YouthSports.video1}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    style={{border: 'none'}}
-                ></iframe>}
-            </div>
+            {
+                selectedArticle.YouthSportsNoGif && selectedArticle.YouthSportsNoGif.video1 ? (
+                    <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', background: 'linear-gradient(to top,#2f2f2f,#de4e7f', borderColor: '#de4e7f' }}>
+                        <iframe
+                            key="video1"
+                            title="YouTube Video"
+                            width="600"
+                            height="400"
+                            src={selectedArticle.YouthSportsNoGif.video1}
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                            style={{ border: 'none' }}
+                        ></iframe>
+                    </div>
+                ) : selectedArticle.YouthSports && selectedArticle.YouthSports.video1 ? (
+                    <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', background: 'linear-gradient(to top,#2f2f2f,#de4e7f', borderColor: '#de4e7f' }}>
+                        <iframe
+                            key="video1"
+                            title="YouTube Video"
+                            width="600"
+                            height="400"
+                            src={selectedArticle.YouthSports.video1}
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                            style={{ border: 'none' }}
+                        ></iframe>
+                    </div>
+                ) : (
+                    ''
+                )
+            }
 
 
             <h1 className="subheadmobile" style={{
