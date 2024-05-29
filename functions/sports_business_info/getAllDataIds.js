@@ -17,7 +17,7 @@ const db = admin.firestore();
 // Function to fetch all document IDs from the "Parents" collection
 const getAllParentIds = async () => {
     try {
-        const parentsRef = db.collection('Organizers'); //change based upone need ie. Organizers, or Parents
+        const parentsRef = db.collection('Parents'); //change based upone need ie. Organizers, or Parents
         const snapshot = await parentsRef.get();
 
         const ids = [];

@@ -17,15 +17,17 @@ const organizersRef = admin.firestore().collection('Parents');
 
 // Example data to add
 const parentsData = {
-    name: 'Coach Ligon',
-    leagueName: 'Prestonwood Soccer',
-    organizerEmail: "evanligon7@gmail.com",
-    teamName: 'Lions',
-    invitedEmails: ['evanalmighty84@gmail.com', 'evanligon7@gmail.com']
+    teamName: 'Ambassadors',
+    leagueName: 'PrestonwoodSoccer',
+    name: 'Emily Ligon',
+    email:'evanemilywedding@gmail.com',
+    meetingId:'',
+    isTeamMeetingFinished:'false',
+    isTeamMeetingStarted:'false',
 };
 
 // Add the data to Firestore
-organizersRef.add(organizerData)
+organizersRef.add(parentsData)
     .then(docRef => {
         console.log('Document written with ID:', docRef.id);
     })

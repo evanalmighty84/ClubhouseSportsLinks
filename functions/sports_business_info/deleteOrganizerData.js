@@ -17,7 +17,7 @@ const db = admin.firestore();
 // Function to delete a document by ID from the "Parents" collection
 const deleteDocumentById = async (docId) => {
     try {
-        const docRef = db.collection('Organizers').doc(docId); // change based upon need ie. Parents or Organizers
+        const docRef = db.collection('Parents').doc(docId); // change based upon need ie. Parents or Organizers
         const docSnapshot = await docRef.get();
 
         if (!docSnapshot.exists) {
@@ -36,7 +36,7 @@ const deleteDocumentById = async (docId) => {
 };
 
 // Usage example
-deleteDocumentById('aAhnEKQv5Anaq8hAi6FJ')
+deleteDocumentById('blG0XxTHDVAR7DK1Px2p')
     .then(({id, data}) => {
         console.log('Document with ID', id, 'has been deleted.');
         console.log('Deleted data:', data);
