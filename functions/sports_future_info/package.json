@@ -4,8 +4,8 @@
 	"main": "index.js",
 	"author": "evanligon7@gmail.com",
 	"dependencies": {
-		"@ffmpeg-installer/ffmpeg": "^1.1.0",
 		"@ffmpeg-installer/darwin-x64": "^4.1.0",
+		"@ffmpeg-installer/ffmpeg": "^1.1.0",
 		"@ffmpeg/ffmpeg": "^0.12.6",
 		"axios": "^1.5.0",
 		"axios-rate-limit": "^1.3.0",

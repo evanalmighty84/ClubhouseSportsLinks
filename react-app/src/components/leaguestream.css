@@ -1,0 +1,35 @@
+/*
+.h-screen{
+    background-color: transparent;
+}
+
+.bg-gray-800 {
+    background-color: transparent;
+}
+
+.set-below-header{
+
+margin-top:calc(15vh + 10px);
+    position:relative;
+}
+!* leaguestream.css *!
+
+.meeting-container {
+    max-height: 180vh; !* Adjust height as needed *!
+    overflow-y: auto; !* Enable vertical scrolling *!
+}
+
+
+@media (max-width: 768px) {
+    .set-below-header {
+        margin-top: calc(0vh + 5px);
+        position:relative;!* Larger increment on small/medium devices *!
+    }
+}
+
+@media (max-width: 480px) {
+    .set-below-heade {
+        margin-top: calc(0vh + 10px);
+        position:relative;!* Even larger increment on very small devices *!
+    }
+}*/

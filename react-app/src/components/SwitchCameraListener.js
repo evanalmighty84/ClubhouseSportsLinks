@@ -5,7 +5,7 @@ import {
 } from "@videosdk.live/react-sdk";
 import { useMeetingAppContext } from "../MeetingAppContextDef";
 import { useEffect, useRef, useState } from "react";
-import useMediaStream from "../hooks/useMediaStream";
+import useMediaStream from "./hooks/useMediaStream";
 
 const SwitchCameraListener = () => {
     const [webcams, setWebcams] = useState([]);

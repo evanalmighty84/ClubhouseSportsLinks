@@ -1,54 +1,69 @@
-// @ts-nocheck
-import React, {useEffect, useState} from 'react';
-import {useParams, useLocation} from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams, useLocation } from 'react-router-dom';
 import Dashboard from "./Dashboard";
-import Videofeed from './videofeed'
-import Videofeedready from "./videofeedready";
+import WaitingToJoinScreen from "../screens/WaitingToJoinScreen";
 import axios from "axios";
-// @ts-ignore
-const TeamStream = ({accessToken, streamingPermission}) => {
-    const [meetingId, setMeetingId] = useState('');
-    const {teamName, leagueName} = useParams();
-    const location = useLocation();
-    const email = location.state.email
-    console.log('here is the email from team stream compponent', email)
-    console.log('here is the teamName from team stream component', teamName, leagueName)
 
+const TeamStream = () => {
+    const [isLoading, setIsLoading] = useState(true);
+    const [meetingId, setMeetingId] = useState('');
+    const [joinLiveButton, setJoinLiveButton] = useState(false);
+    const { teamName, leagueName } = useParams();
+    const location = useLocation();
     useEffect(() => {
-        const checkForMeetingIdToBackend = async (teamName, leagueName) => {
+        const checkForMeetingIdToBackend = async () => {
             console.log('Checking for a meeting ID...');
             try {
-                const data = {
-                    teamName: teamName,
-                    leagueName: leagueName
-                };
-
+                const data = { teamName, leagueName };
                 const response = await axios.post('/server/sports_business_info/api/checkMeetingId', data);
                 console.log('Response from backend:', response.data);
-                const {meetingId} = response.data
-                setMeetingId(meetingId)
+                const { meetingId } = response.data;
+
+                if (meetingId && meetingId.trim() !== '') {
+                    setMeetingId(meetingId);
+                    setJoinLiveButton(true);
+                    console.log('Setting join live button in dashboard to visible');
+                } else {
+                    setJoinLiveButton(false);
+                    console.log('Setting join live button in dashboard to hidden');
+                }
             } catch (error) {
                 console.error('Error checking meeting ID with backend:', error);
-                throw new Error('Error checking meeting ID with backend');
+                setJoinLiveButton(false);
+            } finally {
+                setIsLoading(false);
             }
         };
 
-        checkForMeetingIdToBackend(teamName, leagueName);
-    }, [meetingId]); // Empty dependency array means it runs once when the component mounts
+        checkForMeetingIdToBackend();
+    }, [teamName, leagueName]);
+    // Check if location.state is null or undefined
+    if (!location.state) {
+        return <h1>You must log in to view this page.</h1>;
+    }
+
+    const { email, accessToken, permission } = location.state;
+    console.log('here is the email from team stream component', email);
+    console.log('here is the teamName from team stream component', teamName, leagueName);
 
 
-    // Component logic
+
     return (
         <div>
-
-            {/*{meetingId && <div><h1>Meeting ID: {meetingId}</h1>
-                <Videofeedready teamName={teamName} email={email} meetingId={meetingId}/></div>}
-
-            <h1>new stuff</h1>
-            {!meetingId && <Videofeed teamName={teamName} email={email}/>}*/}
-<Dashboard Email={email} LeagueName={leagueName} TeamName={teamName}/>
+            {isLoading ? (
+                <WaitingToJoinScreen />
+            ) : (
+                <Dashboard
+                    Email={email}
+                    LeagueName={leagueName}
+                    TeamName={teamName}
+                    MeetingId={meetingId}
+                    Permission={permission}
+                    AccessToken={accessToken}
+                    JoinLiveButton={joinLiveButton}
+                />
+            )}
         </div>
-
     );
 };
 

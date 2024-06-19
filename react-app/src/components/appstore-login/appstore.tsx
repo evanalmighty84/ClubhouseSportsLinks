@@ -35,7 +35,7 @@ const AppStore = () => {
             setEmail(email);// Set the access token state
             setPermission(permission)
             setMeetingId(meetingId)
-            setLeagueName('Prestonwood Soccer')
+            setLeagueName(leagueName)
             // Redirect or perform other actions after successful login
             console.log('Organizer response is', response);
             console.log('Organizer accessToken is ', accessToken)
@@ -68,7 +68,7 @@ const AppStore = () => {
 
     useEffect(() => {
         if (accessToken && teamName && permission && email && leagueName) {
-            navigate(`/app/teamStream/${leagueName}/${teamName}`, {
+            navigate(`/app/teamStream/PrestonwoodSoccer/${teamName}`, {
                 state: {
                     email,
                     accessToken,

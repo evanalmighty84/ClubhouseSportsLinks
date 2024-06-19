@@ -1,9 +1,9 @@
 // @ts-nocheck
-import React, {useMemo} from "react";
-import {useMeeting} from "@videosdk.live/react-sdk";
-import {MemoizedParticipantGrid} from "../../TeamStream/ParticipantGrid";
+import React, { useMemo } from "react";
+import { useMeeting } from "@videosdk.live/react-sdk";
+import { MemoizedParticipantGrid } from "../../ParticipantGrid";
 
-function ParticipantsViewer({isPresenting}) {
+function ParticipantsViewer({ isPresenting }) {
     const {
         participants,
         pinnedParticipants,

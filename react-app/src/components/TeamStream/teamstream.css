@@ -2,6 +2,30 @@
  color: #2f2f2f;
  margin-bottom:3em;
 }
+.wrapped-table td {
+ word-wrap: break-word;
+ white-space: normal;
+ max-width: 150px; /* Adjust this value as needed */
+}
+
+.table-responsive {
+ overflow-x: auto;
+}
+.numbers{
+ text-align: center;
+}
+
+.teamstream-card-info {
+ overflow: hidden;
+ text-overflow: ellipsis;
+}
+
+.card-body {
+ max-width: 100%;
+ padding: 0 15px;
+}
+
+
 .roku-card-header{
  background-color: #6f1ab1;
  color:white;
@@ -38,6 +62,7 @@ color:white;
  border-color: white;
  border-style: solid;
  font-weight: 800;
+ padding: .75rem 1.25rem;
 }
 .container {
  display: flex;

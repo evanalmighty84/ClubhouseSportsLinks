@@ -36,7 +36,7 @@ const deleteDocumentById = async (docId) => {
 };
 
 // Usage example
-deleteDocumentById('blG0XxTHDVAR7DK1Px2p')
+deleteDocumentById('kAIB8od3P9Bo5dD7DRas')
     .then(({id, data}) => {
         console.log('Document with ID', id, 'has been deleted.');
         console.log('Deleted data:', data);

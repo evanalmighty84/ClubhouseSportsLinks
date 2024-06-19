@@ -19,11 +19,11 @@ const organizersRef = admin.firestore().collection('Parents');
 const parentsData = {
     teamName: 'Ambassadors',
     leagueName: 'PrestonwoodSoccer',
-    name: 'Emily Ligon',
-    email:'evanemilywedding@gmail.com',
+    name: 'Emily',
+    email:'emilylfung@gmail.com',
     meetingId:'',
-    isTeamMeetingFinished:'false',
-    isTeamMeetingStarted:'false',
+    isTeamMeetingFinished:false,
+    isTeamMeetingStarted:false,
 };
 
 // Add the data to Firestore

@@ -1,4 +1,5 @@
 // @ts-nocheck
+//test
 import React, {useEffect, useRef, useState} from "react";
 import animationData from "../static/animations/Animation-sports.json";
 import Lottie from "lottie-react";
@@ -48,6 +49,7 @@ const WaitingToJoinScreen = () => {
                 alignItems: "center",
                 justifyContent: "center",
                 height: "100vh",
+                backgroundColor:'transparent',
                 // backgroundColor: theme.palette.darkTheme.main,
             }}
         >

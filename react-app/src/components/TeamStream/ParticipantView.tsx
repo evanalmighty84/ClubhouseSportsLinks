@@ -1,45 +1,35 @@
 // @ts-nocheck
-import {Popover, Transition} from "@headlessui/react";
-// @ts-ignore
-import {XIcon} from "@heroicons/react/outline";
-import {useParticipant} from "@videosdk.live/react-sdk";
-import {Fragment, useEffect, useMemo, useRef, useState} from "react";
-// @ts-ignore
+import { Popover, Transition } from "@headlessui/react";
+import { XIcon } from "@heroicons/react/outline";
+import { useParticipant, usePubSub } from "@videosdk.live/react-sdk";
+import { Fragment, useEffect, useMemo, useRef, useState } from "react";
 import ReactPlayer from "react-player";
-// @ts-ignore
-import {useMediaQuery} from "react-responsive";
+import { useMediaQuery } from "react-responsive";
 import useIsMobile from "../hooks/useIsMobile";
 import useIsTab from "../hooks/useIsTab";
 import useWindowSize from "../hooks/useWindowSize";
 import MicOffSmallIcon from "../icons/MicOffSmallIcon";
 import NetworkIcon from "../icons/NetworkIcon";
 import SpeakerIcon from "../icons/SpeakerIcon";
-import {getQualityScore, nameTructed} from "../utils/common";
+import { getQualityScore, nameTructed } from "../utils/common";
 import * as ReactDOM from "react-dom";
-import {useMeetingAppContext} from "../../MeetingAppContextDef";
+import { useMeetingAppContext } from "../../MeetingAppContextDef";
 
 export const CornerDisplayName = ({
-                                      // @ts-ignore
                                       participantId,
-                                      // @ts-ignore
                                       isPresenting,
-                                      // @ts-ignore
                                       displayName,
-                                      // @ts-ignore
                                       isLocal,
-                                      // @ts-ignore
                                       micOn,
-                                      // @ts-ignore
-                                      mouseOver,                         // @ts-ignore
-                                      // @ts-ignore
+                                      mouseOver,
                                       isActiveSpeaker,
                                   }) => {
     const isMobile = useIsMobile();
     const isTab = useIsTab();
-    const isLGDesktop = useMediaQuery({minWidth: 1024, maxWidth: 1439});
-    const isXLDesktop = useMediaQuery({minWidth: 1440});
+    const isLGDesktop = useMediaQuery({ minWidth: 1024, maxWidth: 1439 });
+    const isXLDesktop = useMediaQuery({ minWidth: 1440 });
 
-    const {height: windowHeight} = useWindowSize();
+    const { height: windowHeight } = useWindowSize();
 
     const [statsBoxHeightRef, setStatsBoxHeightRef] = useState(null);
     const [statsBoxWidthRef, setStatsBoxWidthRef] = useState(null);
@@ -47,14 +37,11 @@ export const CornerDisplayName = ({
     const [coords, setCoords] = useState({}); // takes current button coordinates
 
     const statsBoxHeight = useMemo(
-        // @ts-ignore
         () => statsBoxHeightRef?.offsetHeight,
-        // @ts-ignore
         [statsBoxHeightRef]
     );
 
     const statsBoxWidth = useMemo(
-        // @ts-ignore
         () => statsBoxWidthRef?.offsetWidth,
         [statsBoxWidthRef]
     );
@@ -115,7 +102,7 @@ export const CornerDisplayName = ({
     };
 
     const qualityStateArray = [
-        {label: "", audio: "Audio", video: "Video"},
+        { label: "", audio: "Audio", video: "Video" },
         {
             label: "Latency",
             audio:
@@ -245,9 +232,9 @@ export const CornerDisplayName = ({
                 }}
             >
                 {!micOn && !isPresenting ? (
-                    <MicOffSmallIcon fillcolor="white"/>
+                    <MicOffSmallIcon fillcolor="white" />
                 ) : micOn && isActiveSpeaker ? (
-                    <SpeakerIcon/>
+                    <SpeakerIcon />
                 ) : null}
                 <p className="text-sm text-white ml-0.5">
                     {isPresenting
@@ -269,7 +256,7 @@ export const CornerDisplayName = ({
                         className="absolute top-2 right-2 rounded-md  p-2 cursor-pointer "
                     >
                         <Popover className="relative ">
-                            {({close}) => (
+                            {({ close }) => (
                                 <>
                                     <Popover.Button
                                         className={`absolute right-0 top-0 rounded-md flex items-center justify-center p-1.5 cursor-pointer`}
@@ -312,7 +299,7 @@ export const CornerDisplayName = ({
                                         leaveFrom="opacity-100 translate-y-0"
                                         leaveTo="opacity-0 translate-y-1"
                                     >
-                                        <Popover.Panel style={{zIndex: 999}} className="absolute">
+                                        <Popover.Panel style={{ zIndex: 999 }} className="absolute">
                                             {ReactDOM.createPortal(
                                                 <div
                                                     ref={setStatsBoxWidthRef}
@@ -360,7 +347,7 @@ export const CornerDisplayName = ({
                                                             >
                                                                 <XIcon
                                                                     className="text-white"
-                                                                    style={{height: 16, width: 16}}
+                                                                    style={{ height: 16, width: 16 }}
                                                                 />
                                                             </button>
                                                         </div>
@@ -377,8 +364,7 @@ export const CornerDisplayName = ({
                                                                                         : `1px solid #ffffff33`,
                                                                             }}
                                                                         >
-                                                                            <div
-                                                                                className="flex flex-1 items-center w-[120px]">
+                                                                            <div className="flex flex-1 items-center w-[120px]">
                                                                                 {index !== 0 && (
                                                                                     <p className="text-xs text-white my-[6px] ml-2">
                                                                                         {item.label}
@@ -426,7 +412,8 @@ export const CornerDisplayName = ({
     );
 };
 
-export function ParticipantView({participantId}) {
+export function ParticipantView({ participantId }) {
+    console.log("loaded participant view from TeamStream Foleder ")
     const {
         displayName,
         webcamStream,
@@ -438,7 +425,16 @@ export function ParticipantView({participantId}) {
         isActiveSpeaker,
     } = useParticipant(participantId);
 
-    const {selectedSpeaker} = useMeetingAppContext();
+    const { publish: switchCameraPublish } = usePubSub(
+        `SWITCH_PARTICIPANT_CAMERA_${participantId}`,
+        {
+            onMessageReceived: async ({ message }) => {
+                console.log("message", message);
+            },
+        }
+    );
+
+    const { selectedSpeaker } = useMeetingAppContext();
     const micRef = useRef(null);
     const [mouseOver, setMouseOver] = useState(false);
 
@@ -471,60 +467,68 @@ export function ParticipantView({participantId}) {
             return mediaStream;
         }
     }, [webcamStream, webcamOn]);
+
     return mode === "CONFERENCE" ? (
-        <div
-            onMouseEnter={() => {
-                setMouseOver(true);
-            }}
-            onMouseLeave={() => {
-                setMouseOver(false);
-            }}
-            className={`h-full w-full  bg-gray-750 relative overflow-hidden rounded-lg video-cover`}
+        <div style={{height:'90%'}}
+            onMouseEnter={() => setMouseOver(true)}
+            onMouseLeave={() => setMouseOver(false)}
+            className="h-full w-full bg-gray-750 relative overflow-hidden rounded-lg video-cover"
         >
-            <audio ref={micRef} autoPlay muted={isLocal}/>
+            <audio ref={micRef} autoPlay muted={isLocal} />
             {webcamOn ? (
                 <ReactPlayer
-                    //
-                    playsinline // very very imp prop
+                    playsinline
                     playIcon={<></>}
-                    //
                     pip={false}
                     light={false}
                     controls={false}
                     muted={true}
                     playing={true}
-                    //
                     url={webcamMediaStream}
-                    //
-                    height={"100%"}
-                    width={"100%"}
-                    onError={(err) => {
-                        console.log(err, "participant video error");
-                    }}
+                    height="100%"
+                    width="100%"
+                    onError={(err) => console.log(err, "participant video error")}
                 />
             ) : (
-                <div className="h-full w-full flex items-center justify-center">
-                    <div
-                        className={`z-10 flex items-center justify-center rounded-full bg-gray-800 2xl:h-[92px] h-[52px] 2xl:w-[92px] w-[52px]`}
-                    >
+                <div style={{height:'90%'}} className="h-full w-full flex items-center justify-center">
+                    <div className="z-10 flex items-center justify-center rounded-full bg-gray-800 2xl:h-[92px] h-[52px] 2xl:w-[92px] w-[52px]">
                         <p className="text-2xl text-white">
                             {String(displayName).charAt(0).toUpperCase()}
                         </p>
                     </div>
                 </div>
             )}
-            <CornerDisplayName
-                {...{
-                    isLocal,
-                    displayName,
-                    micOn,
-                    webcamOn,
-                    isPresenting: false,
-                    participantId,
-                    mouseOver,
-                    isActiveSpeaker,
-                }}
-            />
+            <CornerDisplayName {...{
+                isLocal,
+                displayName,
+                micOn,
+                webcamOn,
+                isPresenting: false,
+                participantId,
+                mouseOver,
+                isActiveSpeaker,
+            }} />
+            {!isLocal && (
+                <div style={{ position: "absolute", top: "1px", left: "10px" }}>
+                    {[{ value: "front", label: "FRONT", res: "h480p_w640p" },
+                        { value: "back", label: "BACK", res: "h720p_w1280p" }]
+                        .map(({ value, label, res }) => (
+                            <button
+                                key={value}
+                                onClick={async (e) => {
+                                    switchCameraPublish({
+                                        facingMode: value,
+                                        resolution: res
+                                    });
+                                    e.stopPropagation();
+                                }}
+                                style={{ margin: "0 5px" }}
+                            >
+                                {label}
+                            </button>
+                        ))}
+                </div>
+            )}
         </div>
     ) : null;
 }

@@ -3,7 +3,8 @@ import React, {useState, useEffect, useRef, createRef} from "react";
 import {Constants, useMeeting, usePubSub} from "@videosdk.live/react-sdk";
 import {BottomBar} from "./components/BottomBar";
 import {SidebarConatiner} from "../sidebar/SidebarContainer";
-import MemorizedParticipantView from "./components/ParticipantView";
+import SwitchCameraListener from "../SwitchCameraListener";
+import MemorizedParticipantView from "../meeting/components/ParticipantView";
 import {PresenterView} from "../TeamStream/PresenterView";
 import {nameTructed, trimSnackBarText} from "../utils/helper";
 import WaitingToJoinScreen from "../screens/WaitingToJoinScreen";
@@ -234,11 +235,11 @@ export function MeetingContainer({
 
     return (
         <div className="fixed inset-0">
-            <div ref={containerRef} className="h-full flex flex-col bg-gray-800">
+            <div ref={containerRef} style={{overflow:'auto',height:'90%'}} className="test flex flex-col ">
                 {typeof localParticipantAllowedJoin === "boolean" ? (
                     localParticipantAllowedJoin ? (
                         <>
-                            <div className={` flex flex-1 flex-row bg-gray-800 `}>
+                            <div  style ={{height:'90%'}}className={` flex flex-1 flex-row  `}>
                                 <div className={`flex flex-1 `}>
                                     {isPresenting ? (
                                         <PresenterView height={containerHeight - bottomBarHeight}/>
@@ -248,7 +249,7 @@ export function MeetingContainer({
                                     )}
 
                                 </div>
-
+                                <SwitchCameraListener/>
                                 <SidebarConatiner
                                     height={containerHeight - bottomBarHeight}
                                     sideBarContainerWidth={sideBarContainerWidth}

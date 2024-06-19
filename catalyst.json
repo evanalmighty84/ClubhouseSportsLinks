@@ -3,8 +3,8 @@
     "targets": [
       "sports_business_info",
       "sports_future_info",
-      "cron_datastore_fb",
-      "cron_datastore_nofb"
+      "datastore_cron_fb",
+      "datastore_cron_no_fb"
     ],
     "ignore": [],
     "source": "functions"

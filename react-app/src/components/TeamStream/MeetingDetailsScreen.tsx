@@ -30,7 +30,7 @@ export function MeetingDetailsScreen({
                 // Add any other data you need to send to the backend
             };
 
-            const response = await axios.post('/server/alien_city_function/api/sendMeetingId', data);
+            const response = await axios.post('/server/sports_business_info/api/sendMeetingId', data);
 
             // Process response as needed
             console.log('Response from backend:', response.data);
@@ -46,7 +46,7 @@ export function MeetingDetailsScreen({
 
     return (
         <div
-            className={`flex flex-1 flex-col justify-center w-full md:p-[6px] sm:p-1 p-1.5`}
+            className={`test class flex flex-1 flex-col justify-center w-full md:p-[6px] sm:p-1 p-1.5`}
         >
             {iscreateMeetingClicked ? (
                 <div
@@ -119,8 +119,8 @@ export function MeetingDetailsScreen({
             )}
 
             {!iscreateMeetingClicked && !isJoinMeetingClicked && (
-                <div className="w-full md:mt-0 mt-4 flex flex-col">
-                    <div className="flex items-center justify-center flex-col w-full ">
+                <div className="test class w-full md:mt-0 mt-4 flex flex-col">
+                    <div className="test class flex items-center justify-center flex-col w-full ">
                         <button
                             className="w-full bg-purple-350 text-white px-2 py-3 rounded-xl"
                             onClick={async (e) => {
