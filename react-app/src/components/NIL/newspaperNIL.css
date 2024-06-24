@@ -44,7 +44,7 @@ p {
 
     font-size: 14px;
     line-height: 1.5rem;
-    display: inline-block;
+    display: block;
     padding: 0 1% 0 1%;
     vertical-align: top;
     margin-bottom: 50px;
@@ -101,16 +101,15 @@ p {
 }
 
 .collumn .headline.hl3 {
-    background-color: indianred;
-    border-bottom-style: solid;
-    padding-bottom: 1em;
-    border-color: brown;
+    border-color: white;
+    color: white;
+    background-color: brown;
+    border-style: solid;
+    padding: 1em;
     font-weight: 800;
     font-style: italic;
     font-size: 24px;
     box-sizing: border-box;
-
-    border-top: 1px solid brown;
 
 }
 

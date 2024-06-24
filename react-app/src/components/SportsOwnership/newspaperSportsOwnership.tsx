@@ -59,29 +59,30 @@ const NewspaperArticles = ({ serpApiArticles, serpApiArticlesNoGif}) => {
     return (
         <div>
             <div className="head">
+                <div className="subhead" style={{justifyContent: "space-between"}}>
+                    <div style={{textAlign: "center", flex: "1"}}>
+                        <h1 className="subheadmobile" style={{
+                            fontSize: '1.5rem',
+                            backgroundColor: 'brown',
+                            color:'white',
+                            borderStyle:'solid',
+                            borderColor:'white',
+                            borderWidth:'.2em',
+
+                        }}>Latest Sports Ownership News</h1>
+                    </div>
+                </div>
                 <div className="headerobjectswrapper">
                     <div className="flex-container"> {/* Flex container */}
                         <div className="middleColumnStyle">
                             <div className="header-content middle-content">
-                                <header>WINNOVATIVE Daily <br/>Times<Link to="/app/signup"> </Link></header>
+                                <header>Sports Ownership <br/>News<Link to="/app/signup"> </Link></header>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div className="subhead" style={{justifyContent: "space-between"}}>
-                    <div style={{textAlign: "center", flex: "1"}}>
-                        <h1 className="subheadmobile" style={{
-                            background: 'linear-gradient(to right,#2f2f2f,brown',
-                            margin: ".5em 0 0em",
-                            borderTop: '.1em solid indianred',
-                            borderBottom: '0.1em solid indianred',
-                            backgroundColor: 'brown',
-                            fontSize: '1.5rem',
-                            marginBottom: ".5rem"
-                        }}>Latest Sports Ownership News</h1>
-                    </div>
-                </div>
+
 
                 <div className="content">
 
@@ -94,6 +95,7 @@ const NewspaperArticles = ({ serpApiArticles, serpApiArticlesNoGif}) => {
                                         <span className="headline hl3 "
                                               style={{
                                                   borderColor:'white',
+                                                  color:'white',
                                                   backgroundColor: 'brown',
                                                   borderStyle: 'solid',
                                                   padding:'1em',

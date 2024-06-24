@@ -1,3 +1,23 @@
+.headerSection{
+    background-color:steelblue;
+}
+/* Add this to your Header.css file */
+
+.hamburger-text {
+    display: none;
+    color: white;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@media (max-width: 576px) {
+    .hamburger-text {
+        display: inline-block;
+    }
+}
+
+
 .navlink {
     font-family: "sans-serif";
 }
@@ -36,11 +56,11 @@
 
 }
 .custom-toggler .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
 .custom-toggler.navbar-toggler {
-    border-color: rgb(255,102,203);
+
 }
 
 
@@ -52,7 +72,8 @@
 }
 
 .navlinkText img {
-    width: 15%
+    width: 50%;
+    margin:auto;
 }
 
 /*@media only screen and (max-width: 600px) {
@@ -84,21 +105,11 @@
 
 }
 
-.menu-container {
-    border-color: #2f2f2f;
-    border-bottom-width: 1.5px;
-    border-right-width: 1px;
-    border-left-width: 0.5px;
-    border-top-width: 1px;
-    border-style: solid;
-    display: block;
-    padding: 0;
-    /* Add any other styles you need */
-}
+
 
 
 .menu-container.open {
-    background-color: #2f2f2f;
+    background-color: steelblue;
 
 }
 

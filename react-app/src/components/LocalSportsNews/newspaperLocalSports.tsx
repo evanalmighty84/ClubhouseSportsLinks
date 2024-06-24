@@ -109,14 +109,12 @@ const NewspaperArticles = ({serpApiArticles}) => {
 
                     <div style={{textAlign: "center", flex: "1"}}>
                         <h1 className="subheadmobile" style={{
-                            background: 'linear-gradient(to right,#2f2f2f,brown',
-                            margin: ".5em 0 0em",
-                            borderTop: '.1em solid indianred',
-                            borderBottom: '0.1em solid indianred',
-                            backgroundColor: 'brown',
                             fontSize: '1.5rem',
-                            marginBottom: "1em",
-                            letterSpacing: "normal"
+                            backgroundColor: 'gold',
+                            color:'white',
+                            borderStyle:'solid',
+                            borderColor:'white',
+                            borderWidth:'.2em',
                         }}>Latest Local Sports News</h1>
                     </div>
                 </div>

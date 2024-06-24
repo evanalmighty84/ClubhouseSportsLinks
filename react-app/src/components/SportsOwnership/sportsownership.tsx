@@ -10,9 +10,10 @@ const SportsOwnership = () => {
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
     const sportsOwnershipContainerStyle: React.CSSProperties = {
+        backgroundColor:'white',
         display: 'flex',
-        color: 'white',
-        paddingTop: '1em'
+        color: 'black',
+
     };
 
     const sportsOwnershipColumnStyle1: React.CSSProperties = {
@@ -22,7 +23,7 @@ const SportsOwnership = () => {
         paddingTop: '.1em',
         display: 'flex',
         justifyContent: 'start',
-        marginTop: '1em'
+
     };
 
     const sportsOwnershipColumnStyle2: React.CSSProperties = {
@@ -30,8 +31,7 @@ const SportsOwnership = () => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#2f2f2f',
-        marginTop: '1em',
+        backgroundColor: 'white',
         borderRadius: '.1em'
     };
 
@@ -42,7 +42,7 @@ const SportsOwnership = () => {
         paddingTop: '.1em',
         display: 'flex',
         justifyContent: 'end',
-        marginTop: '1em'
+
     };
 
     const sportsOwnershipTimelineStyle: React.CSSProperties = {

@@ -3,19 +3,20 @@ import React, { useState, useEffect } from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import { NavLink, useLocation } from 'react-router-dom';
-import stockEmoji from "../icon10.svg";
+import './Header.css';
+import stockEmoji from "../memphis-risk-management-kpi-and-metrics.png";
 // @ts-ignore
-import nilEmoji from "../icon7.svg";
+import nilEmoji from "../memphis-financial-success-and-economic-growth (1).png";
 // @ts-ignore
-import youthSportsEmoji from "../icon2.svg";
+import youthSportsEmoji from "../memphis-brainstorm-innovation-creativity-and-teamwork.png";
 // @ts-ignore
-import sportsTechnologyEmoji from "../icon9.svg";
+import sportsTechnologyEmoji from "../memphis-ai-and-artificial-neural-networks (1).png";
 // @ts-ignore
-import sportsOwnershipEmoji from "../icon5.svg";
+import sportsOwnershipEmoji from "../memphis-market-segmentation-and-targeted-advertising.png";
 // @ts-ignore
-import localSportsEmoji from "../icon3.svg";
+import localSportsEmoji from "../memphis-studying-geography-with-a-globe.png";
 // @ts-ignore
-import appStoreEmoji from "../icon4.svg";
+import appStoreEmoji from "../memphis-biometric-authentication-and-account-login.gif";
 
 
 const Header = () => {
@@ -49,7 +50,7 @@ const Header = () => {
         let style = {
             color: 'white', // Default text color
             backgroundColor: 'transparent', // Default background color
-            borderWidth: '.1em',
+            borderWidth: '.4em',
             borderStyle: 'solid',
             borderColor: 'transparent' // Default border color
         };
@@ -57,47 +58,47 @@ const Header = () => {
             case '/app/sportsOwnership':
                 style.backgroundColor= 'brown';
                     style.color= 'white';
-                    style.borderColor = 'brown';
+                style.borderColor = 'white';
                 style.color = 'brown';
                 break;
             case '/app/sportsTechProducts':
                 style.backgroundColor= 'steelblue';
                     style.color= 'white';
-                    style.borderColor = 'steelblue';
+                style.borderColor = 'white';
                 style.color = 'steelblue';
                 break;
             case '/app/youthSports':
                 style.backgroundColor= '#de4e7f';
                     style.color= 'white';
-                    style.borderColor = "#de4e7f";
+                style.borderColor = 'white';
                 style.color = "#de4e7f";
                 break;
             case '/app/NIL':
                 style.backgroundColor= '#008B00';
                     style.color= 'white';
-                    style.borderColor = "#008B00";
+                style.borderColor = 'white';
                 style.color = "#008B00";
                 break;
             case '/app/sportsTechnologyStocks':
                 style.backgroundColor= 'cadetblue';
                     style.color= 'white';
-                    style.borderColor = 'cadetblue';
+                style.borderColor = 'white';
                 style.color = 'cadetblue';
                 break;
             case '/app/localSportsNews':
                 style.backgroundColor= 'gold';
                     style.color= 'white';
-                    style.borderColor = 'gold'; // Changed to match the visual intent (gold and yellow have different hex values)
+                style.borderColor = 'white';
                 style.color = 'gold';
                 break;
             case '/app/appstore':
                 style.backgroundColor= 'orange';
                     style.color= 'white';
-                    style.borderColor = 'orange';
+                style.borderColor = 'white';
                 style.color = 'orange';
                 break;
             default:
-                style.borderColor = 'transparent';
+                style.borderColor = 'white';
                 style.color = 'white';
         }
 
@@ -164,12 +165,23 @@ const Header = () => {
                     }}
                     aria-controls="basic-navbar-nav"
                 />
-
-                <Navbar.Collapse id="basic-navbar-nav" style={{border:'solid',borderWidth:'.5em',  borderColor: getBorderColor(location.pathname)}}>
+                <a className="hamburger-text" href={'/app/'}> <span>Clubhouse Links</span></a>
+                <Navbar.Collapse id="basic-navbar-nav" style={{ border: 'solid', borderWidth: '.5em', borderColor: getBorderColor(location.pathname) }}>
                     <Nav className="mr-auto" style={{ display: 'flex', width: '100%' }}>
                         {navItems.map(renderNavLink)}
                     </Nav>
                 </Navbar.Collapse>
+                <Nav.Link
+                    as={NavLink}
+                    to="/"
+                    className="ml-auto"
+                    style={{
+                        display: isHeaderExpanded ? 'none' : 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                    }}
+                >
+                </Nav.Link>
             </Navbar>
         </div>
     );

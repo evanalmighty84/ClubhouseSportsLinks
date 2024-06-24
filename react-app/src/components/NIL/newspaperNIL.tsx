@@ -73,14 +73,12 @@ const NewspaperArticles = ({ serpApiArticles, serpApiArticlesNoGif}) => {
 
                     <div style={{textAlign: "center", flex: "1"}}>
                         <h1 className="subheadmobile" style={{
-                            background: 'linear-gradient(to right,#2f2f2f,#008B00',
-                            margin: ".5em 0 0em",
-                            borderTop: '.1em solid #008B00',
-                            borderBottom: '0.1em solid white',
-                            backgroundColor: '#008B00',
                             fontSize: '1.5rem',
-                            marginBottom: "1em",
-                            letterSpacing: "normal"
+                            backgroundColor: '#008B00',
+                            color:'white',
+                            borderStyle:'solid',
+                            borderColor:'white',
+                            borderWidth:'.2em',
                         }}>Latest NIL News</h1>
                     </div>
                 </div>

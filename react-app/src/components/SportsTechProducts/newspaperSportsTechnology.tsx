@@ -59,6 +59,19 @@ const NewspaperArticles = ({ serpApiArticles, serpApiArticlesNoGif}) => {
         <div>
             <hr/>
             <div className="SportsTechnology-head">
+                <div className="subhead" style={{justifyContent: "space-between"}}>
+
+                    <div style={{textAlign: "center", flex: "1"}}>
+                        <h1 className="subheadmobile" style={{
+                            fontSize: '1.5rem',
+                            backgroundColor: 'steelblue',
+                            color:'white',
+                            borderStyle:'solid',
+                            borderColor:'white',
+                            borderWidth:'.2em',
+                        }}>Latest Sports Technology News</h1>
+                    </div>
+                </div>
                 <div className="headerobjectswrapper">
                     <div className="flex-container"> {/* Flex container */}
                         <div className="middleColumnStyle">
@@ -70,21 +83,7 @@ const NewspaperArticles = ({ serpApiArticles, serpApiArticlesNoGif}) => {
                     </div>
                 </div>
 
-                <div className="subhead" style={{justifyContent: "space-between"}}>
 
-                    <div style={{textAlign: "center", flex: "1"}}>
-                        <h1 className="subheadmobile" style={{
-                            background: 'linear-gradient(to right,#2f2f2f,steelblue',
-                            margin: ".5em 0 0em",
-                            borderTop: '.1em solid steelblue',
-                            borderBottom: '0.1em solid steelblue',
-                            backgroundColor: 'steelblue',
-                            fontSize: '1.5rem',
-                            marginBottom: "1em",
-                            letterSpacing: "normal"
-                        }}>Latest Sports Technology News</h1>
-                    </div>
-                </div>
                 {/* <video style={{width:'100%',backgroundColor:'skyblue',margin: '1% 1% 1% 0%',
                    }} className="overlay-image"  controls autoPlay muted>
                     <source src={videoSrc} type="video/mp4" />

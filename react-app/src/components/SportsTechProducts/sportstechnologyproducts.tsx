@@ -11,9 +11,9 @@ const SportsTechnology = () => {
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
     const sportsTechnologyContainerStyle: React.CSSProperties = {
+        backgroundColor:'white',
         display: 'flex',
-        color: 'white',
-        paddingTop: '1em'
+        color: 'black',
     };
 
     const sportsTechnologyColumnStyle1: React.CSSProperties = {
@@ -23,7 +23,6 @@ const SportsTechnology = () => {
         paddingTop: '.1em',
         display: 'flex',
         justifyContent: 'start',
-        marginTop: '1em'
 
     };
     const sportsTechnologyColumnStyle2: React.CSSProperties = {
@@ -31,7 +30,7 @@ const SportsTechnology = () => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: '1em',
+        backgroundColor: 'white',
         borderRadius: '.1em'
     };
     const sportsTechnologyColumnStyle3: React.CSSProperties = {
@@ -41,7 +40,6 @@ const SportsTechnology = () => {
         paddingTop: '.1em',
         display: 'flex',
         justifyContent: 'end',
-        marginTop: '1em'
 
     };
     const sportsTechnologyTimelineStyle: React.CSSProperties = {

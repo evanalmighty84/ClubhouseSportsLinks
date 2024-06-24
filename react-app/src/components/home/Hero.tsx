@@ -146,7 +146,9 @@ const Hero = () => {
                 </div>
 
                 <div>
-                    <Container style={{padding: '0px'}}>
+                    <Container style={{padding: '0px', backgroundColor:'white',
+                        display: 'flex',
+                        color: 'black',}}>
 
 
                         <div className="new-container" style={{padding: 'inherit'}}>

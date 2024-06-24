@@ -84,14 +84,13 @@ const NewspaperArticles = ({newsDataIOArticles, serpApiArticles, serpApiArticles
 
                     <div style={{textAlign: "center", flex: "1"}}>
                         <h1 className="subheadmobile" style={{
-                            background: 'linear-gradient(to right,#2f2f2f,brown',
-                            margin: ".5em 0 0em",
-                            borderTop: '.1em solid indianred',
-                            borderBottom: '0.1em solid indianred',
+                            color:'white',
+                            borderStyle:'solid',
+                            borderColor:'white',
+                            borderWidth:'.2em',
                             backgroundColor: 'brown'
                             ,
                             fontSize: '1.5rem',
-                            marginBottom: ".5rem"
                         }}>Sports Ownership</h1>
                     </div>
                 </div>
