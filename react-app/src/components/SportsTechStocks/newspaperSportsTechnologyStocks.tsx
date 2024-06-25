@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, {CSSProperties, useState, useEffect} from 'react';
+import React, {CSSProperties, useState,useRef, useEffect} from 'react';
 import {useContext} from 'react';
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
@@ -22,12 +22,18 @@ import WaitingToJoinScreen from "../screens/WaitingToJoinScreen";
 
 
 // @ts-ignore
-const NewspaperArticles = ({newsDataIOArticles, newsDataIOArticlesNoGif, serpApiArticles, serpApiArticlesNoGif}) => {
+const NewspaperArticles = ({newsDataIOArticles, newsDataIOArticlesNoGif, serpApiArticles, serpApiArticlesNoGif,onHeightChange}) => {
     const [weather, setWeather] = useState('Plenty of Sunshine'); // Example weather state
 
 
     const navigate = useNavigate();
     const {setSelectedArticle} = useContext(ArticleContext);
+    const containerRef = useRef(null);
+    const handleHeightChange = () => {
+        if (containerRef.current) {
+            onHeightChange(containerRef.current.clientHeight);
+        }
+    };
 
     const navigateToSportsTechnologyStocks = (article: { SportsTechnologyStock: { video1: string; video2: string; video3: string; title: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; url: string | undefined; description: boolean } }) => {
         // @ts-ignore
@@ -43,6 +49,9 @@ const NewspaperArticles = ({newsDataIOArticles, newsDataIOArticlesNoGif, serpApi
         navigate("/app/SportsTechnologyStocksDetails");
         // Navigation code to the Localsports component goes here...
     }
+    useEffect(() => {
+        handleHeightChange();
+    }, [serpApiArticles, serpApiArticlesNoGif]);
 
     useEffect(() => {
 
@@ -56,7 +65,7 @@ const NewspaperArticles = ({newsDataIOArticles, newsDataIOArticlesNoGif, serpApi
 
     // @ts-ignore
     return (
-        <div>
+        <div ref={containerRef}>
             <hr/>
             <div className="SportsTechnologyStocks-head">
                 <div className="headerobjectswrapper">

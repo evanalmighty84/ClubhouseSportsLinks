@@ -7,11 +7,12 @@ const YouthSports = () => {
     const [newsPaperObject2, setNewsPaperObject2] = useState({});
     const [newsPaperObject2B, setNewsPaperObject2B] = useState({});
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const [timelineHeight, setTimelineHeight] = useState(500);
 
     const youthSportsContainerStyle: React.CSSProperties = {
+        backgroundColor:'white',
         display: 'flex',
-        color: 'white',
-        paddingTop: '1em'
+        color: 'black',
     };
 
     const youthSportsColumnStyle1: React.CSSProperties = {
@@ -29,8 +30,7 @@ const YouthSports = () => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#2f2f2f',
-        marginTop: '1em',
+        backgroundColor: 'white',
         borderRadius: '.1em'
     };
 
@@ -93,17 +93,8 @@ const YouthSports = () => {
         <div style={youthSportsContainerStyle}>
             <div style={windowWidth < 1076 ? hideColumnsStyle : youthSportsColumnStyle1}>
                 <div className="twitter-timeline twitter-timeline-rendered" style={youthSportsTimelineStyle}>
-                    <iframe
-                        id="twitter-widget-0"
-                        scrolling="no"
-                        frameBorder="0"
-                        allowTransparency
-                        allowFullScreen
-                        className=""
-                        style={youthSportsIframeStyle}
-                        title="Twitter Timeline"
-                        src="https://syndication.twitter.com/srv/timeline-profile/screen-name/GenXMediaGuide?dnt=false&amp;embedId=twitter-widget-0&amp;features=..."
-                    ></iframe>
+                    <iframe height={`${timelineHeight}px`} src="https://rss.app/embed/v1/wall/tGmvGZlANP0xdOYZ"
+                            frameBorder="0"></iframe>
                 </div>
             </div>
             <div style={youthSportsColumnStyle2}>
@@ -111,22 +102,14 @@ const YouthSports = () => {
                     <NewspaperArticles
                         serpApiArticles={newsPaperObject2}
                         serpApiArticlesNoGif={newsPaperObject2B}
+                        onHeightChange={setTimelineHeight}
                     />
                 </div>
             </div>
             <div style={windowWidth < 1076 ? hideColumnsStyle : youthSportsColumnStyle3}>
                 <div className="twitter-timeline twitter-timeline-rendered" style={youthSportsTimelineStyle}>
-                    <iframe
-                        id="twitter-widget-2"
-                        scrolling="no"
-                        frameBorder="0"
-                        allowTransparency
-                        allowFullScreen
-                        className=""
-                        style={youthSportsIframeStyle}
-                        title="Twitter Timeline"
-                        src="https://syndication.twitter.com/srv/timeline-profile/screen-name/GenXMediaGuide?dnt=false&amp;embedId=twitter-widget-2&amp;features=..."
-                    ></iframe>
+                    <iframe height={`${timelineHeight}px`} src="https://rss.app/embed/v1/wall/tYqftkFOmW1C57gf"
+                            frameBorder="0"></iframe>
                 </div>
             </div>
             <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>

@@ -73,7 +73,7 @@ const NewspaperArticles = ({newsDataIOArticles, serpApiArticles, serpApiArticles
                     <div className="flex-container"> {/* Flex container */}
                         <div className="middleColumnStyle">
                             <div className="header-content middle-content">
-                                <header>WINNOVATIVE Daily <br/>Times<Link to="/app/signup"> </Link></header>
+                                <header>Clubhouse <br/>Links<Link to="/app/signup"> </Link></header>
                             </div>
 
                         </div>

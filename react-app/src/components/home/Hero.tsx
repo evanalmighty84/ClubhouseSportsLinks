@@ -15,7 +15,7 @@ import ArticlesList from "./ArticleCarousel";
 import "./home.css";
 import axios from "axios";
 
-
+import WaitingToJoinScreen from '../screens/WaitingToJoinScreen'
 import {Box} from '@chakra-ui/react';
 import NewspaperArticles from "./newspaper";
 
@@ -129,7 +129,7 @@ const Hero = () => {
             });
     }, [])
     if (loading) {
-        return <div>Loading...</div>;  // Render loading state or spinner here
+        return <div><WaitingToJoinScreen/></div>;  // Render loading state or spinner here
     }
 
     return (

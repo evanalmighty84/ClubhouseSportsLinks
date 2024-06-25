@@ -10,9 +10,9 @@ const LocalSports = () => {
     const [newsPaperObject2B, setNewsPaperObject2B] = useState({});
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const containerStyle: React.CSSProperties = {
+        backgroundColor:'white',
         display: 'flex',
-        color: 'white',
-        paddingTop: '1em'
+        color: 'black',
     };
 
     const columnStyle1: React.CSSProperties = {
@@ -30,8 +30,7 @@ const LocalSports = () => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#2f2f2f',
-        marginTop: '1em',
+        backgroundColor: 'white',
         borderRadius: '.1em'
     };
     const columnStyle3: React.CSSProperties = {

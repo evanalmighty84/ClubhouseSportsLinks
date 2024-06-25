@@ -9,6 +9,7 @@ const SportsTechnology = () => {
     const [newsPaperObject, setNewsPaperObject] = useState({});
     const [newsPaperObjectB, setNewsPaperObjectB] = useState({});
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const [timelineHeight, setTimelineHeight] = useState(500); // Initial height
 
     const sportsTechnologyContainerStyle: React.CSSProperties = {
         backgroundColor:'white',
@@ -100,38 +101,21 @@ const SportsTechnology = () => {
         <div style={sportsTechnologyContainerStyle}>
             <div style={windowWidth < 1076 ? hideColumnsStyle :sportsTechnologyColumnStyle1}>
                 <div className="twitter-timeline twitter-timeline-rendered" style={sportsTechnologyTimelineStyle}>
-                    <iframe
-                        id="twitter-widget-0"
-                        scrolling="no"
-                        frameBorder="0"
-                        allowTransparency
-                        allowFullScreen
-                        className=""
-                        style={sportsTechnologyIframeStyle}
-                        title="Twitter Timeline"
-                        src="https://syndication.twitter.com/srv/timeline-profile/screen-name/GenXMediaGuide?dnt=false&amp;embedId=twitter-widget-0&amp;features=..."
-                    ></iframe>
+                    <iframe height={`${timelineHeight}px`} src="https://rss.app/embed/v1/wall/tOVNGYjgFaj3ZcOw"
+                            frameBorder="0"></iframe>
                 </div>
             </div>
             <div style={sportsTechnologyColumnStyle2}>
                 <div className="twitter-timeline twitter-timeline-rendered" style={sportsTechnologyTimelineStyle}>
                    <NewspaperArticles serpApiArticles={newsPaperObject}
-                                       serpApiArticlesNoGif={newsPaperObjectB}/>
+                                       serpApiArticlesNoGif={newsPaperObjectB}
+                                      onHeightChange={setTimelineHeight}/>
                 </div>
             </div>
             <div style={windowWidth < 1076 ? hideColumnsStyle :sportsTechnologyColumnStyle3}>
                 <div className="twitter-timeline twitter-timeline-rendered" style={sportsTechnologyTimelineStyle}>
-                    <iframe
-                        id="twitter-widget-2"
-                        scrolling="no"
-                        frameBorder="0"
-                        allowTransparency
-                        allowFullScreen
-                        className=""
-                        style={sportsTechnologyIframeStyle}
-                        title="Twitter Timeline"
-                        src="https://syndication.twitter.com/srv/timeline-profile/screen-name/GenXMediaGuide?dnt=false&amp;embedId=twitter-widget-2&amp;features=..."
-                    ></iframe>
+                    <iframe height={`${timelineHeight}px`} src="https://rss.app/embed/v1/wall/tpGIWWO2Nb8CLzME"
+                            frameBorder="0"></iframe>
                 </div>
             </div>
             <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
