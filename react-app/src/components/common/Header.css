@@ -1,5 +1,5 @@
 .headerSection{
-    background-color:steelblue;
+    background:linear-gradient(to right, #044e70, #00254f)
 }
 /* Add this to your Header.css file */
 
@@ -109,7 +109,7 @@
 
 
 .menu-container.open {
-    background-color: steelblue;
+    background:linear-gradient(to right, #044e70, #00254f)
 
 }
 

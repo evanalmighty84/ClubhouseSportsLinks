@@ -5,6 +5,8 @@
       <excludeFolder url="file://$MODULE_DIR$/temp" />
       <excludeFolder url="file://$MODULE_DIR$/.tmp" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/.build/functions/datastore_cron_fb/node_modules/@tensorflow/tfjs-core/src/platforms" />
+      <excludeFolder url="file://$MODULE_DIR$/.build/functions/datastore_cron_fb/node_modules/@tensorflow/tfjs-core/dist/platforms" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

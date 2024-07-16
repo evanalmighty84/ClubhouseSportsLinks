@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
-import NewspaperArticles from "./newspaperYouthSports";
+import NewsSection from "./newspaperYouthSports";
 
 const YouthSports = () => {
 
@@ -29,7 +29,6 @@ const YouthSports = () => {
         flex: '1',
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center',
         backgroundColor: 'white',
         borderRadius: '.1em'
     };
@@ -99,9 +98,7 @@ const YouthSports = () => {
             </div>
             <div style={youthSportsColumnStyle2}>
                 <div className="twitter-timeline twitter-timeline-rendered" style={youthSportsTimelineStyle}>
-                    <NewspaperArticles
-                        serpApiArticles={newsPaperObject2}
-                        serpApiArticlesNoGif={newsPaperObject2B}
+                    <NewsSection
                         onHeightChange={setTimelineHeight}
                     />
                 </div>

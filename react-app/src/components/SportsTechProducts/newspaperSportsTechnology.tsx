@@ -1,191 +1,226 @@
-// @ts-nocheck
-import React, {CSSProperties, useState,useRef, useEffect} from 'react';
-import {useContext} from 'react';
-import {useNavigate} from 'react-router-dom';
-import WaitingToJoinScreen from '../screens/WaitingToJoinScreen'
+import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import {Carousel} from 'react-responsive-carousel';
-import './newspaperSportsTechnology.css';
-import path from 'path';
-// @ts-ignore
-import {InView} from 'react-intersection-observer';
+import { InView } from 'react-intersection-observer';
+import { ArticleContext } from '../../App';
 
-import {Link} from "react-router-dom";
+interface Article {
+    id: string;
+    url: string;
+    title: string;
+    content_text: string;
+    content_html: string;
+    image: string;
+    date_published: string;
+    authors: { name: string }[];
+    attachments: { url: string }[];
+}
 
-// @ts-ignore
-
-// @ts-ignore
-import guyImage from "../Banner_Image.gif";
-
-import {ArticleContext} from "../../App";
-
-
-
-// @ts-ignore
-const NewspaperArticles = ({ serpApiArticles, serpApiArticlesNoGif, onHeightChange}) => {
-    const [weather, setWeather] = useState('Plenty of Sunshine'); // Example weather state
-
-
+const NewspaperArticles = ({
+                               serpApiArticles,
+                               serpApiArticlesNoGif,
+                               onHeightChange,
+                           }: {
+    serpApiArticles: any[];
+    serpApiArticlesNoGif: any[];
+    onHeightChange: (height: number) => void;
+}) => {
+    const [selectedSport, setSelectedSport] = useState('');
+    const [fetchedArticles, setFetchedArticles] = useState<Article[]>([]);
+    const [showSerpApiArticles, setShowSerpApiArticles] = useState(true);
     const navigate = useNavigate();
-    const {setSelectedArticle} = useContext(ArticleContext);
-    const containerRef = useRef(null);
+    const { setSelectedArticle } = React.useContext(ArticleContext);
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    const rssFeeds: { [key: string]: string } = {
+        sportsDataAnalytics: 'https://rss.app/feeds/v1.1/tqT5Go9AjgGoMua3.json',
+        athleticPerformance: 'https://rss.app/feeds/v1.1/tfFMpBXKOVuTbUYo.json',
+        athleticApparel: 'https://rss.app/feeds/v1.1/tFlakD2qiGivqLwd.json',
+        artificialIntelligence: 'https://rss.app/feeds/v1.1/t8u86Fgn0cBpgIpY.json',
+    };
+
+    const fetchArticles = async (sport: string) => {
+        try {
+            const response = await axios.get(rssFeeds[sport]);
+            const articles: Article[] = response.data.items;
+            const uniqueArticles = articles.filter(
+                (article, index, self) => index === self.findIndex((a) => a.title === article.title)
+            );
+            setFetchedArticles(uniqueArticles);
+        } catch (error) {
+            console.error(`Error fetching ${sport} articles:`, error);
+            // Handle error gracefully (e.g., show a message or retry fetching)
+        }
+    };
+
+    useEffect(() => {
+        fetchArticles(selectedSport);
+    }, [selectedSport]);
+
+    useEffect(() => {
+        fetchArticles('sportsDataAnalytics'); // Fetch sports Data Analytics articles by default
+    }, []);
+
+    const navigateToArticle = (article: Article) => {
+        window.open(article.url, '_blank');
+    };
+
     const handleHeightChange = () => {
         if (containerRef.current) {
             onHeightChange(containerRef.current.clientHeight);
         }
     };
 
-    const navigateToSportsTechnology = (article: { SportsTechnology: { video1: string; video2: string; video3: string; title: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; url: string | undefined; description: boolean } }) => {
-        // @ts-ignore
-        setSelectedArticle(article); // set the clicked article
-
-        navigate("/app/sportsTechProductsDetails");
-        // Navigation code to the Localsports component goes here...
-    }
-    const navigateToSportsTechnologyNoGif = (article: { SportsTechnologyNoGif: { video1: string; video2: string; video3: string; title: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; url: string | undefined; description: boolean } }) => {
-        // @ts-ignore
-        setSelectedArticle(article); // set the clicked article
-
-        navigate("/app/sportsTechProductsDetails");
-        // Navigation code to the Localsports component goes here...
-    }
     useEffect(() => {
-        handleHeightChange();
-    }, [serpApiArticles, serpApiArticlesNoGif]);
+        const handleHeightChange = () => {
+            if (containerRef.current) {
+                onHeightChange(containerRef.current.clientHeight);
+            }
+        };
 
-    useEffect(() => {
+        handleHeightChange(); // Initial height calculation
 
-    }, [serpApiArticles]);
+        // Recalculate height when articles change
+        const timeout = setTimeout(() => {
+            handleHeightChange();
+        }, 500); // Adjust timeout as needed based on content loading speed
 
-    if (!Array.isArray(serpApiArticles)) {
-        // Handle the case when articles are not in the correct format
-        return <div><WaitingToJoinScreen/></div>;
+        return () => clearTimeout(timeout);
+    }, [fetchedArticles, serpApiArticles, onHeightChange]);
+
+
+    if (!Array.isArray(serpApiArticles) || !Array.isArray(serpApiArticlesNoGif)) {
+        return <div>Loading...</div>;
     }
 
+    const handleShowSerpApiArticles = (event: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
+        event.preventDefault(); // Prevent default behavior of anchor tag
+        setShowSerpApiArticles(true);
+        setSelectedSport(''); // Reset selected sport when showing SERP API articles
+    };
 
-    // @ts-ignore
+    const handleSportSelection = (sport: string, event: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
+        event.preventDefault(); // Prevent default behavior of anchor tag
+        setSelectedSport(sport);
+        setShowSerpApiArticles(false); // Reset to hide SERP API articles when selecting a sport
+    };
+
     return (
-        <div ref={containerRef}>
-            <hr/>
-            <div className="SportsTechnology-head">
-                <div className="subhead" style={{justifyContent: "space-between"}}>
-
-                    <div style={{textAlign: "center", flex: "1"}}>
-                        <h1 className="subheadmobile" style={{
-                            fontSize: '1.5rem',
-                            backgroundColor: 'steelblue',
-                            color:'white',
-                            borderStyle:'solid',
-                            borderColor:'white',
-                            borderWidth:'.2em',
-                        }}>Latest Sports Technology News</h1>
-                    </div>
-                </div>
-                <div className="headerobjectswrapper">
-                    <div className="flex-container"> {/* Flex container */}
-                        <div className="middleColumnStyle">
-                            <div className="header-content middle-content">
-                                <header>Sports Technology <br/>News<Link to="/app/signup"> </Link></header>
+        <div>
+            <nav
+                className="nav nav-pills nav-fill"
+                style={{ marginTop: '2em', backgroundColor: 'black', margin: '10px', border: 'solid' }}
+            >
+                <span
+                    className={`nav-item nav-link ${showSerpApiArticles ? 'active' : ''} w-100`}
+                    onClick={handleShowSerpApiArticles}
+                    style={{
+                        cursor: 'pointer',
+                        color: 'steelblue',
+                        backgroundColor: showSerpApiArticles ? 'white' : 'transparent',
+                        display: 'block',
+                        padding: '0.5rem 1rem',
+                    }}
+                >
+                    SPORTS TECHNOLOGY
+                </span>
+                {['sportsDataAnalytics', 'athleticPerformance', 'athleticApparel', 'artificialIntelligence'].map((sport) => (
+                    <span
+                        key={sport}
+                        className={`nav-item nav-link ${selectedSport === sport && !showSerpApiArticles ? 'active' : ''} w-100`}
+                        onClick={(e) => handleSportSelection(sport, e)}
+                        style={{
+                            cursor: 'pointer',
+                            color: 'steelblue',
+                            backgroundColor: selectedSport === sport && !showSerpApiArticles ? 'white' : 'transparent',
+                            display: 'block',
+                            padding: '0.5rem 1rem',
+                        }}
+                    >
+                        {sport === 'sportsDataAnalytics' ? 'Data Analytics' :
+                            sport === 'athleticPerformance' ? 'Athletic Performance' :
+                                sport === 'artificialIntelligence' ? 'Artificial Intelligence' :
+                                    sport === 'athleticApparel' ? 'Athletic Apparel' :
+                                sport.charAt(0).toUpperCase() + sport.slice(1)}
+                    </span>
+                ))}
+            </nav>
+            <div ref={containerRef}>
+                {showSerpApiArticles ? (
+                    serpApiArticles.map((article, index) => (
+                        <div key={index} className="column">
+                            <div
+                                className="head"
+                                style={{
+                                    color: 'white',
+                                    borderColor: 'white',
+                                    backgroundColor: 'steelblue',
+                                    borderStyle: 'solid',
+                                    padding: '0em',
+                                    fontWeight: '800',
+                                    fontStyle: 'italic',
+                                    fontSize: '24px',
+                                    boxSizing: 'border-box',
+                                    textAlign: 'center',
+                                }}
+                            >
+                                <span className="headline hl3">{article.SportsTechnology.title}</span>
                             </div>
-
+                            <InView>
+                                {({ inView, ref }) => (
+                                    <img
+                                        onClick={() => navigateToArticle(article)}
+                                        className={`media ${inView ? 'in-view' : ''}`}
+                                        src={article.SportsTechnology.url}
+                                        style={{ borderColor: 'white', borderWidth: '0.2em' }}
+                                        alt=""
+                                        ref={ref}
+                                    />
+                                )}
+                            </InView>
+                            <p className="newspaper-description">{article.SportsTechnology.description}</p>
                         </div>
-                    </div>
-                </div>
-
-
-                {/* <video style={{width:'100%',backgroundColor:'skyblue',margin: '1% 1% 1% 0%',
-                   }} className="overlay-image"  controls autoPlay muted>
-                    <source src={videoSrc} type="video/mp4" />
-                </video>*/}
-
-
-                <div className="content">
-
-
-                    <div className="collumns">
-                        {Array.isArray(serpApiArticles) && serpApiArticles.length > 0 ? (
-                            serpApiArticles.map((article: { SportsTechnology: { video1: string; video2: string; video3: string; title: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; url: string | undefined; description: boolean }; }, index: number) => (
-                                <div key={index} className="collumn">
-                                    <div className="head">
-                                        <span className="headline hl3 "
-                                              style={{
-                                                  borderColor:'white',
-                                                  backgroundColor: 'steelblue',
-                                                  borderStyle: 'solid',
-                                                  padding:'1em',
-                                                  fontWeight: '800',
-                                                  fontStyle: 'italic',
-                                                  fontSize: '24px',
-                                                  boxSizing: 'border-box',
-                                              }}>{article.SportsTechnology.title}</span>
-                                        {console.log('HERE IS THE TITLE!!!!' + article.SportsTechnology.title)}
-                                    </div>
-
-                                    {index < serpApiArticles.length && (
-                                        <InView>
-                                            {({inView, ref}) => (
-                                                <img onClick={() => navigateToSportsTechnology(article)}
-                                                     className={`media ${inView ? 'in-view' : ''}`}
-                                                     src={article.SportsTechnology.url}
-                                                     style={{    borderColor: 'white',
-                                                         borderWidth: '0.2em'}}
-                                                     alt=""
-                                                     ref={ref}
-                                                />
-                                            )}
-                                        </InView>
-                                    )}
-                                    <p className="newspaper-description">{article.SportsTechnology.description}</p>
-                                </div>
-                            ))
-                        ) : (
-                            <div>No articles available</div>
-                        )}
-
-                        {Array.isArray(serpApiArticlesNoGif) && serpApiArticlesNoGif.length > 0 ? (
-                            serpApiArticlesNoGif.map((article: { SportsTechnologyNoGif: { video1: string; video2: string; video3: string; title: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; url: string | undefined; description: boolean }; }, index: number) => (
-                                <div key={index} className="collumn">
-                                    <div className="head">
-                                        <span className="headline hl3"
-                                              style={{
-                                                  borderColor:'white',
-                                                  backgroundColor: 'steelblue',
-                                                  borderStyle: 'solid',
-                                                  padding:'1em',
-                                                  fontWeight: '800',
-                                                  fontStyle: 'italic',
-                                                  fontSize: '24px',
-                                                  boxSizing: 'border-box',
-                                              }}>{article.SportsTechnologyNoGif.title}</span>
-                                    </div>
-
-                                    {index < serpApiArticlesNoGif.length && (
-                                        <InView>
-                                            {({inView, ref}) => (
-                                                <img onClick={() => navigateToSportsTechnologyNoGif(article)}
-                                                     className={`media ${inView ? 'in-view' : ''}`}
-                                                     src={article.SportsTechnologyNoGif.url}
-                                                     style={{    borderColor: 'white',
-                                                         borderWidth: '0.2em'}}
-                                                     alt=""
-                                                     ref={ref}
-                                                />
-                                            )}
-                                        </InView>
-                                    )}
-                                    <p className="newspaper-description">{article.SportsTechnologyNoGif.description}</p>
-                                </div>
-                            ))
-                        ) : (
-                            <div>No articles available</div>
-                        )}
-                    </div>
-
-
-                </div>
+                    ))
+                ) : (
+                    fetchedArticles.map((article, index) => (
+                        <div key={index} className="column">
+                            <div
+                                className="head"
+                                style={{
+                                    color: 'white',
+                                    borderColor: 'white',
+                                    backgroundColor: selectedSport === 'sportsDataAnalytics' ? 'black' :
+                                        selectedSport === 'athleticPerformance' ? 'black' :
+                                            selectedSport === 'athleticApparel' ? 'black' : 'black',
+                                    borderStyle: 'solid',
+                                    padding: '0em',
+                                    fontWeight: '800',
+                                    fontStyle: 'italic',
+                                    fontSize: '24px',
+                                    boxSizing: 'border-box',
+                                    textAlign: 'center',
+                                }}
+                            >
+                                <span className="headline hl3">{article.title}</span>
+                            </div>
+                            <InView>
+                                {({ inView, ref }) => (
+                                    <img
+                                        onClick={() => navigateToArticle(article)}
+                                        className={`media ${inView ? 'in-view' : ''}`}
+                                        src={article.image}
+                                        style={{ borderColor: 'white', borderWidth: '0.2em' }}
+                                        alt=""
+                                        ref={ref}
+                                    />
+                                )}
+                            </InView>
+                            <p className="newspaper-description">{article.content_text}</p>
+                        </div>
+                    ))
+                )}
             </div>
         </div>
-
     );
 };
 
